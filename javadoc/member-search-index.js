@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"Math","c":"Controller","l":"Controller()","url":"%3Cinit%3E()"},{"p":"Math","c":"Main","l":"Main()","url":"%3Cinit%3E()"},{"p":"Math","c":"Main","l":"start(Stage)","url":"start(javafx.stage.Stage)"},{"p":"Math","c":"Controller","l":"sumSubmitButtonPressed()"}]

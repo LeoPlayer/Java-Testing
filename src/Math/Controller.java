@@ -16,203 +16,195 @@ import javafx.scene.control.TextArea;
  * output also created after adding two numbers together
  */
 public class Controller {
+    private int tempSign = 0;
     private int sign = 0;
-    private int signUsed = 0;
-    private int step = 0;
-    private float firstInput;
+    private int stage = 0;
+    private float firstValue;
+    private float secondValue;
+    private float mathSum;
+    private int stageFix;
     @FXML private TextArea sumResult;
-    @FXML private TextArea inputOne;
+    @FXML private TextArea userInput;
     @FXML private Button plus;
     @FXML private Button minus;
     @FXML private Button multiply;
     @FXML private Button divide;
-    @FXML protected void allClear() {
-        inputOne.clear();
-        sumResult.clear();
-        sign = 0;
-        signUsed = 0;
-        step = 0;
-        System.out.println("User All Clear");
-    }
-    @FXML protected void clear() {
-        inputOne.clear();
-        System.out.println("User Clear");
-    }
     @FXML protected void plusButton() {
-        sign = 1;
-        System.out.println("User changed sign to plus");
-        signButton();
+        tempSign = 1;
+        signPressed();
+        plus();
     }
     @FXML protected void minusButton() {
-        sign = 2;
-        System.out.println("User changed sign to minus");
-        signButton();
+        tempSign = 2;
+        signPressed();
+        minus();
     }
     @FXML protected void multiplyButton() {
-        sign = 3;
-        System.out.println("User changed sign to multiply");
-        signButton();
+        tempSign = 3;
+        signPressed();
+        multiply();
     }
     @FXML protected void divideButton() {
-        sign = 4;
-        System.out.println("User changed sign to divide");
-        signButton();
+        tempSign = 4;
+        signPressed();
+        divide();
     }
-
-    private void signButton() {
-        if (step == 0) {
-            try {
-                firstInput = Float.parseFloat(inputOne.getText());
-                System.out.println("User firstInput as " + firstInput + " which is a number");
-                step = 1;
-                System.out.println("step is " + step);
-                signUsed = sign;
-                inputOne.clear();
-                if (signUsed == 1) {
-                    plus.setStyle("-fx-background-color: #adadad");
-                    minus.setStyle("-fx-background-color: #eaeaea");
-                    multiply.setStyle("-fx-background-color: #eaeaea");
-                    divide.setStyle("-fx-background-color: #eaeaea");
-                }
-                else if (signUsed == 2) {
-                    plus.setStyle("-fx-background-color: #eaeaea");
-                    minus.setStyle("-fx-background-color: #adadad");
-                    multiply.setStyle("-fx-background-color: #eaeaea");
-                    divide.setStyle("-fx-background-color: #eaeaea");
-                }
-                else if (signUsed == 3) {
-                    plus.setStyle("-fx-background-color: #eaeaea");
-                    minus.setStyle("-fx-background-color: #eaeaea");
-                    multiply.setStyle("-fx-background-color: #adadad");
-                    divide.setStyle("-fx-background-color: #eaeaea");
-                }
-                else if (signUsed == 4) {
-                    plus.setStyle("-fx-background-color: #eaeaea");
-                    minus.setStyle("-fx-background-color: #eaeaea");
-                    multiply.setStyle("-fx-background-color: #eaeaea");
-                    divide.setStyle("-fx-background-color: #adadad");
+    private void signPressed() {
+        if (stage == 0 ) { //no value
+            if (userInput.getText().equals("")) {
+                if (sumResult.getText().equals("")) {
+                    inputError();
+                    resetSigns();
                 }
                 else {
-                    signUsed = 0;
-                    sign = 0;
-                    step = 0;
-                    System.out.println("APP ERROR: signUsed Error, not number 1~4");
+                    firstValue = Float.parseFloat(sumResult.getText());
+                    sign = tempSign;
+                    stage = 1;
                 }
             }
-            catch (NumberFormatException firstNotNum){
-                System.out.println("User firstInput as " + inputOne.getText() + " which is not a number");
-                inputError();
+            else {
+                try {
+                    firstValue = Float.parseFloat(userInput.getText());
+                    if (firstValue == (int)firstValue) {
+                        sumResult.setText(String.valueOf(Math.round(firstValue)));
+                    }
+                    else {
+                        sumResult.setText(String.valueOf(firstValue));
+                    }
+                    userInput.clear();
+                    stage = 1;
+                    sign = tempSign;
+                    resetSigns();
+                }
+                catch (NumberFormatException firstNotNum) {
+                    inputError();
+                }
             }
         }
-        else {
-            System.out.println("User pressed sign when step = 1");
-            signError();
+        else if (stage == 1) { //firstValue has value
+            if (userInput.getText().equals("")) {
+                inputError();
+            }
+            else {
+                math();
+                sign = tempSign;
+                firstValue = mathSum;
+                resetSigns();
+            }
         }
     }
-
     @FXML protected void equalsButton() {
-        if (step == 1) {
-            try {
-                float secondInput = Float.parseFloat(inputOne.getText());
-                System.out.println("User secondInput as " + secondInput + " which is a number");
-                if (signUsed == 1) {
-                    float sumTotal = firstInput + secondInput;
-                    if (sumTotal == (int)sumTotal) {
-                        sumResult.setText(String.valueOf(Math.round(sumTotal)));
-                        System.out.println("added " + firstInput + " and " + secondInput + " to produce the integer " + Math.round(sumTotal));
-                    }
-                    else {
-                        sumResult.setText(String.valueOf(sumTotal));
-                        System.out.println("added " + firstInput + " and " + secondInput + " to produce the float " + sumTotal);
-                    }
-                }
-                else if (signUsed == 2) {
-                    float sumTotal = firstInput - secondInput;
-                    if (sumTotal == (int)sumTotal) {
-                        sumResult.setText(String.valueOf(Math.round(sumTotal)));
-                        System.out.println("subtracted " + secondInput + " from " + firstInput + " to produce the integer " + Math.round(sumTotal));
-                    }
-                    else {
-                        sumResult.setText(String.valueOf(sumTotal));
-                        System.out.println("subtracted " + secondInput + " from " + firstInput + " to produce the float " + sumTotal);
-                    }
-                }
-                else if (signUsed == 3) {
-                    float sumTotal = firstInput * secondInput;
-                    if (sumTotal == (int)sumTotal) {
-                        sumResult.setText(String.valueOf(Math.round(sumTotal)));
-                        System.out.println("multiplied " + firstInput + " and " + secondInput + " to produce the integer " + Math.round(sumTotal));
-                    }
-                    else {
-                        sumResult.setText(String.valueOf(sumTotal));
-                        System.out.println("multiplied " + firstInput + " and " + secondInput + " to produce the float " + sumTotal);
-                    }
-                }
-                else if (signUsed == 4) {
-                    float sumTotal = firstInput / secondInput;
-                    if (sumTotal == (int)sumTotal) {
-                        sumResult.setText(String.valueOf(Math.round(sumTotal)));
-                        System.out.println("divided " + firstInput + " by " + secondInput + " to produce the integer " + Math.round(sumTotal));
-                    }
-                    else {
-                        sumResult.setText(String.valueOf(sumTotal));
-                        System.out.println("divided " + firstInput + " by " + secondInput + " to produce the float " + sumTotal);
-                    }
-                }
-                else {
-                    float sumTotal = secondInput;
-                    if (sumTotal == (int)sumTotal) {
-                        sumResult.setText(String.valueOf(Math.round(sumTotal)));
-                        System.out.println("integer first input " + secondInput + " taken to sumResult");
-                    }
-                    else {
-                        sumResult.setText(String.valueOf(sumTotal));
-                        System.out.println("float first input " + secondInput + " taken to sumResult");
-                    }
-                }
-                step = 0;
-                System.out.println("step is " + step);
-                inputOne.clear();
-                sign = 0;
-                signUsed = 0;
-                plus.setStyle("-fx-background-color: #eaeaea");
-                minus.setStyle("-fx-background-color: #eaeaea");
-                multiply.setStyle("-fx-background-color: #eaeaea");
-                divide.setStyle("-fx-background-color: #eaeaea");
-            }
-            catch (NumberFormatException secondNotNum){
-                System.out.println("User secondInput as " + inputOne.getText() + " which is not a number");
+        resetSigns();
+        if (stage == 0) {
+            if (userInput.getText().equals(null)) {
                 inputError();
             }
+            else {
+                try {
+                    firstValue = Float.parseFloat(userInput.getText());
+                    if (firstValue == (int)firstValue) {
+                        sumResult.setText(String.valueOf(Math.round(firstValue)));
+                    }
+                    else {
+                        sumResult.setText(String.valueOf(firstValue));
+                    }
+                    userInput.clear();
+                    stage = 0;
+                }
+                catch (NumberFormatException notNumberFirstEquals) {
+                    inputError();
+                }
+            }
         }
-        else {
-            step = 1;
-            signUsed = 0;
-            equalsButton();
-            System.out.println("User pressed equals when step = 0");
+        else if (stage == 1) {
+            math();
+            sign = 0;
+            tempSign = 0;
+            if (stageFix == 0) {
+                stage = 0;
+            }
         }
     }
-    /**
-     * error code for when user doesn't input a numeral into the field
-     * text: please put in a number
-     * text in log: inputError code run
-     */
+    private void math() {
+        try {
+            secondValue = Float.parseFloat(userInput.getText());
+            if (sign == 1) {
+                mathSum = firstValue + secondValue;
+                userInput.clear();
+                mathOutput();
+            }
+            if (sign == 2) {
+                mathSum = firstValue - secondValue;
+                userInput.clear();
+                mathOutput();
+            }
+            if (sign == 3) {
+                mathSum = firstValue * secondValue;
+                userInput.clear();
+                mathOutput();
+            }
+            if (sign == 4) {
+                mathSum = firstValue / secondValue;
+                userInput.clear();
+                mathOutput();
+            }
+        }
+        catch (NumberFormatException secondNotNum) {
+            inputError();
+            stageFix = 1;
+        }
+    }
+    @FXML protected void clear() {
+
+    }
+    @FXML protected void allClear() {
+
+    }
+    private void plus() {
+        plus.setStyle("-fx-background-color: #adadad");
+        minus.setStyle("-fx-background-color: #eaeaea");
+        multiply.setStyle("-fx-background-color: #eaeaea");
+        divide.setStyle("-fx-background-color: #eaeaea");
+    }
+    private void minus() {
+        plus.setStyle("-fx-background-color: #eaeaea");
+        minus.setStyle("-fx-background-color: #adadad");
+        multiply.setStyle("-fx-background-color: #eaeaea");
+        divide.setStyle("-fx-background-color: #eaeaea");
+    }
+    private void multiply() {
+        plus.setStyle("-fx-background-color: #eaeaea");
+        minus.setStyle("-fx-background-color: #eaeaea");
+        multiply.setStyle("-fx-background-color: #adadad");
+        divide.setStyle("-fx-background-color: #eaeaea");
+    }
+    private void divide() {
+        plus.setStyle("-fx-background-color: #eaeaea");
+        minus.setStyle("-fx-background-color: #eaeaea");
+        multiply.setStyle("-fx-background-color: #eaeaea");
+        divide.setStyle("-fx-background-color: #adadad");
+    }
+    private void resetSigns() {
+        plus.setStyle("-fx-background-color: #eaeaea");
+        minus.setStyle("-fx-background-color: #eaeaea");
+        multiply.setStyle("-fx-background-color: #eaeaea");
+        divide.setStyle("-fx-background-color: #eaeaea");
+    }
     private void inputError() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Input Error");
-        alert.setHeaderText("Input not a number");
+        alert.setHeaderText("Not a number");
         alert.setContentText("Please put in a number");
 
         alert.showAndWait();
         System.out.println("inputError code ran");
     }
-    private void signError() {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Button Error");
-        alert.setHeaderText("Press equals for result");
-        alert.setContentText(null);
-
-        alert.showAndWait();
-        System.out.println("buttonError code ran");
+    private void mathOutput() {
+        if (mathSum == (int)mathSum) {
+            sumResult.setText(String.valueOf(Math.round(mathSum)));
+        }
+        else {
+            sumResult.setText(String.valueOf(mathSum));
+        }
     }
 }

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-05-17T07:25:23.690061Z</date>
+  <millis>1558077923690</millis>
+  <nanos>61000</nanos>
+  <sequence>0</sequence>
+  <logger>Math.Main</logger>
+  <level>CONFIG</level>
+  <class>Math.Main</class>
+  <method>start</method>
+  <thread>15</thread>
+  <message>Configuration done.</message>
+</record>
+<record>
+  <date>2019-05-17T07:25:36.518285Z</date>
+  <millis>1558077936518</millis>
+  <nanos>285000</nanos>
+  <sequence>1</sequence>
+  <logger>Math.Main</logger>
+  <level>WARNING</level>
+  <class>Math.Controller</class>
+  <method>numericTest</method>
+  <thread>15</thread>
+  <message>input not numeral</message>
+</record>
+<record>
+  <date>2019-05-17T07:25:37.499022Z</date>
+  <millis>1558077937499</millis>
+  <nanos>22000</nanos>
+  <sequence>2</sequence>
+  <logger>Math.Main</logger>
+  <level>WARNING</level>
+  <class>Math.Controller</class>
+  <method>inputError</method>
+  <thread>15</thread>
+  <message>inputError</message>
+</record>
+<record>
+  <date>2019-05-17T07:25:40.281937Z</date>
+  <millis>1558077940281</millis>
+  <nanos>937000</nanos>
+  <sequence>3</sequence>
+  <logger>Math.Main</logger>
+  <level>INFO</level>
+  <class>Math.Main</class>
+  <method>lambda$start$0</method>
+  <thread>15</thread>
+  <message>User closed program</message>
+</record>
+</log>

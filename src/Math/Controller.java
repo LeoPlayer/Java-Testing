@@ -10,181 +10,196 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
 /**
  * fxml made using Scene Builder 2
  * Controller class used to initialise floats, then update with field when submit pressed
  * output also created after adding two numbers together
  */
 public class Controller {
+    private int stage = 0;
     private int tempSign = 0;
     private int sign = 0;
-    private int stage = 0;
-    private float firstValue;
-    private float secondValue;
-    private float mathSum;
-    private int stageFix;
-    @FXML private TextArea sumResult;
+    private float firstNumber = 0;
+    private float secondNumber = 0;
+    private float mathResult = 0;
+    private int numericTestResult = 0; //1 is number 0 is not number
+    @FXML private TextArea mathOutput;
     @FXML private TextArea userInput;
     @FXML private Button plus;
     @FXML private Button minus;
     @FXML private Button multiply;
     @FXML private Button divide;
+    private final Logger LOGGER = Logger.getLogger(Main.class.getName());
     @FXML protected void plusButton() {
         tempSign = 1;
+        plusColor();
         signPressed();
-        plus();
     }
     @FXML protected void minusButton() {
         tempSign = 2;
+        minusColor();
         signPressed();
-        minus();
     }
     @FXML protected void multiplyButton() {
         tempSign = 3;
+        multiplyColor();
         signPressed();
-        multiply();
     }
     @FXML protected void divideButton() {
         tempSign = 4;
+        divideColor();
         signPressed();
-        divide();
     }
     private void signPressed() {
-        if (stage == 0 ) { //no value
+        if (stage == 0) {
             if (userInput.getText().equals("")) {
-                if (sumResult.getText().equals("")) {
+                if (mathOutput.getText().equals("")) {
+                    LOGGER.log(Level.WARNING, "signPressed, s=0, no uI mO");
                     inputError();
-                    resetSigns();
+                    resetSignColor();
                 }
                 else {
-                    firstValue = Float.parseFloat(sumResult.getText());
+                    firstNumber = Float.parseFloat(mathOutput.getText());
                     sign = tempSign;
                     stage = 1;
                 }
             }
             else {
-                try {
-                    firstValue = Float.parseFloat(userInput.getText());
-                    if (firstValue == (int)firstValue) {
-                        sumResult.setText(String.valueOf(Math.round(firstValue)));
-                    }
-                    else {
-                        sumResult.setText(String.valueOf(firstValue));
-                    }
-                    userInput.clear();
-                    stage = 1;
+                numericTest();
+                if (numericTestResult == 0) {
+                    inputError();
+                    resetSignColor();
+                }
+                else if (numericTestResult == 1) {
+                    firstNumber = Float.parseFloat(userInput.getText());
                     sign = tempSign;
-                    resetSigns();
-                }
-                catch (NumberFormatException firstNotNum) {
-                    inputError();
-                }
-            }
-        }
-        else if (stage == 1) { //firstValue has value
-            if (userInput.getText().equals("")) {
-                inputError();
-            }
-            else {
-                math();
-                sign = tempSign;
-                firstValue = mathSum;
-                resetSigns();
-            }
-        }
-    }
-    @FXML protected void equalsButton() {
-        resetSigns();
-        if (stage == 0) {
-            if (userInput.getText().equals(null)) {
-                inputError();
-            }
-            else {
-                try {
-                    firstValue = Float.parseFloat(userInput.getText());
-                    if (firstValue == (int)firstValue) {
-                        sumResult.setText(String.valueOf(Math.round(firstValue)));
-                    }
-                    else {
-                        sumResult.setText(String.valueOf(firstValue));
-                    }
+                    stage = 1;
                     userInput.clear();
-                    stage = 0;
-                }
-                catch (NumberFormatException notNumberFirstEquals) {
-                    inputError();
                 }
             }
         }
         else if (stage == 1) {
-            math();
-            sign = 0;
-            tempSign = 0;
-            if (stageFix == 0) {
+            if (userInput.getText().equals("")) {
+                sign = tempSign;
+            }
+            else {
+                numericTest();
+                if (numericTestResult == 0) {
+                    inputError();
+                    resetSignColor();
+                }
+                else if (numericTestResult == 1){
+                    secondNumber = Float.parseFloat(userInput.getText());
+                    math();
+                    displayAnswer();
+                    sign = tempSign;
+                    firstNumber = mathResult;
+                    userInput.clear();
+                }
+            }
+        }
+    }
+    @FXML protected void equalsButton() {
+        if (stage == 0) {
+            if (!userInput.getText().equals("")) {
+                numericTest();
+                if (numericTestResult == 0) {
+                    inputError();
+                }
+                else if (numericTestResult == 1) {
+                    mathResult = Float.parseFloat(userInput.getText());
+                    displayAnswer();
+                    userInput.clear();
+                }
+            }
+        }
+        else if (stage == 1) {
+            if (userInput.getText().equals("")) {
+                mathResult = firstNumber;
+                displayAnswer();
                 stage = 0;
+                resetSignColor();
+            }
+            else {
+                numericTest();
+                if (numericTestResult == 0) {
+                    inputError();
+                }
+                else if (numericTestResult == 1) {
+                    secondNumber = Float.parseFloat(userInput.getText());
+                    math();
+                    displayAnswer();
+                    stage = 0;
+                    resetSignColor();
+                    userInput.clear();
+                }
             }
         }
     }
     private void math() {
+        if (sign == 1) mathResult = firstNumber + secondNumber;
+        else if (sign == 2) mathResult = firstNumber - secondNumber;
+        else if (sign == 3) mathResult = firstNumber * secondNumber;
+        else if (sign == 4) mathResult = firstNumber / secondNumber;
+        else LOGGER.log(Level.SEVERE, "sign not 1~4 at math()");
+    }
+    private void numericTest() {
         try {
-            secondValue = Float.parseFloat(userInput.getText());
-            if (sign == 1) {
-                mathSum = firstValue + secondValue;
-                userInput.clear();
-                mathOutput();
-            }
-            if (sign == 2) {
-                mathSum = firstValue - secondValue;
-                userInput.clear();
-                mathOutput();
-            }
-            if (sign == 3) {
-                mathSum = firstValue * secondValue;
-                userInput.clear();
-                mathOutput();
-            }
-            if (sign == 4) {
-                mathSum = firstValue / secondValue;
-                userInput.clear();
-                mathOutput();
-            }
+            Float.parseFloat(userInput.getText());
+            numericTestResult = 1;
         }
-        catch (NumberFormatException secondNotNum) {
-            inputError();
-            stageFix = 1;
+        catch (NumberFormatException inputNotNum) {
+            numericTestResult = 0;
+            LOGGER.log(Level.WARNING, "input not numeral");
         }
+    }
+    private void displayAnswer() {
+        if (mathResult == (int)mathResult) {
+            mathOutput.setText(String.valueOf(Math.round(mathResult)));
+        }
+        else mathOutput.setText(String.valueOf(mathResult));
     }
     @FXML protected void clear() {
-
+        userInput.clear();
     }
     @FXML protected void allClear() {
-
+        userInput.clear();
+        mathOutput.clear();
+        stage = 0;
+        resetSignColor();
+        sign = 0;
+        firstNumber = 0;
+        secondNumber = 0;
     }
-    private void plus() {
+    private void plusColor() {
         plus.setStyle("-fx-background-color: #adadad");
         minus.setStyle("-fx-background-color: #eaeaea");
         multiply.setStyle("-fx-background-color: #eaeaea");
         divide.setStyle("-fx-background-color: #eaeaea");
     }
-    private void minus() {
+    private void minusColor() {
         plus.setStyle("-fx-background-color: #eaeaea");
         minus.setStyle("-fx-background-color: #adadad");
         multiply.setStyle("-fx-background-color: #eaeaea");
         divide.setStyle("-fx-background-color: #eaeaea");
     }
-    private void multiply() {
+    private void multiplyColor() {
         plus.setStyle("-fx-background-color: #eaeaea");
         minus.setStyle("-fx-background-color: #eaeaea");
         multiply.setStyle("-fx-background-color: #adadad");
         divide.setStyle("-fx-background-color: #eaeaea");
     }
-    private void divide() {
+    private void divideColor() {
         plus.setStyle("-fx-background-color: #eaeaea");
         minus.setStyle("-fx-background-color: #eaeaea");
         multiply.setStyle("-fx-background-color: #eaeaea");
         divide.setStyle("-fx-background-color: #adadad");
     }
-    private void resetSigns() {
+    private void resetSignColor() {
         plus.setStyle("-fx-background-color: #eaeaea");
         minus.setStyle("-fx-background-color: #eaeaea");
         multiply.setStyle("-fx-background-color: #eaeaea");
@@ -197,14 +212,6 @@ public class Controller {
         alert.setContentText("Please put in a number");
 
         alert.showAndWait();
-        System.out.println("inputError code ran");
-    }
-    private void mathOutput() {
-        if (mathSum == (int)mathSum) {
-            sumResult.setText(String.valueOf(Math.round(mathSum)));
-        }
-        else {
-            sumResult.setText(String.valueOf(mathSum));
-        }
+        LOGGER.log(Level.WARNING, "inputError");
     }
 }

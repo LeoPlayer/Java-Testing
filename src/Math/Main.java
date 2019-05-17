@@ -14,9 +14,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.PrintStream;
+import java.io.IOException;
 import java.util.Optional;
+import java.util.logging.*;
 
 public class Main extends Application {
 
@@ -32,8 +32,31 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 860, 600));
         primaryStage.show();
 
-        PrintStream log = new PrintStream(new File("Log.txt"));
-        System.setOut(log);
+        final Logger LOGGER = Logger.getLogger(Main.class.getName());
+        Handler consoleHandler;
+        Handler fileHandler;
+        try {
+            //Creating consoleHandler and fileHandler
+            consoleHandler = new ConsoleHandler();
+            fileHandler = new FileHandler("./Log.log");
+
+            //Assigning handlers to LOGGER object
+            LOGGER.addHandler(consoleHandler);
+            LOGGER.addHandler(fileHandler);
+
+            //Setting levels to handlers and LOGGER
+            consoleHandler.setLevel(Level.ALL);
+            fileHandler.setLevel(Level.ALL);
+            LOGGER.setLevel(Level.ALL);
+
+            LOGGER.config("Configuration done.");
+
+            //Console handler removed
+            LOGGER.removeHandler(consoleHandler);
+
+        } catch (IOException exception) {
+            LOGGER.log(Level.SEVERE, "Error occur in FileHandler.", exception);
+        }
 
         primaryStage.setOnCloseRequest(event -> {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -42,13 +65,14 @@ public class Main extends Application {
             alert.setContentText(null);
 
             Optional<ButtonType> result = alert.showAndWait();
-            if (result.get() == ButtonType.OK){
-                System.out.println("User Closed Program");
-                Platform.exit();
-            } else {
-                event.consume();
+            if (result.isPresent()) {
+                if (result.get() == ButtonType.OK) {
+                    LOGGER.log(Level.INFO, "User closed program");
+                    Platform.exit();
+                } else {
+                    event.consume();
+                }
             }
         });
     }
 }
-

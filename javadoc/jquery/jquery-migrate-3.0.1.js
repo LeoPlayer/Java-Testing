@@ -1,6 +1,6 @@
-/*!
- * jQuery Migrate - v3.0.1 - 2017-09-26
- * Copyright jQuery Foundation and other contributors
+/*
+ * Copyright (©) 2019. Leo Player - Manly Selective Campus
+ * made using JavaFX in IntelliJ
  */
 ;( function( factory ) {
 	if ( typeof define === "function" && define.amd ) {

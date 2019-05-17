@@ -1,3 +1,8 @@
+/*
+ * Copyright (©) 2019. Leo Player - Manly Selective Campus
+ * made using JavaFX in IntelliJ
+ */
+
 /*!
 
 JSZip v3.1.5 - A JavaScript class for generating and reading zip files

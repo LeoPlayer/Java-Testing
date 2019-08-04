@@ -19,19 +19,14 @@ import java.util.Optional;
 import java.util.logging.*;
 
 public class Main extends Application {
-
     /**
      * initialises program
      * PrintStream section changes system output to file on boot
      * setOnCloseRequest runs confirmation of closing application
      */
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Adding Two Numbers");
-        primaryStage.setScene(new Scene(root, 860, 600));
-        primaryStage.show();
 
+    @Override
+    public void init() {
         final Logger LOGGER = Logger.getLogger(Main.class.getName());
         Handler consoleHandler;
         Handler fileHandler;
@@ -55,19 +50,29 @@ public class Main extends Application {
             LOGGER.removeHandler(consoleHandler);
 
         } catch (IOException exception) {
-            LOGGER.log(Level.SEVERE, "Error occur in FileHandler.", exception);
+            LOGGER.log(Level.SEVERE, "FAILED TO CREATE LOG", exception);
+            LOGGER.severe("failed to create log");
         }
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        final Logger LOGGER = Logger.getLogger(Main.class.getName());
+        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        primaryStage.setTitle("Adding Two Numbers");
+        primaryStage.setScene(new Scene(root, 860, 600));
+        primaryStage.show();
 
         primaryStage.setOnCloseRequest(event -> {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Quitting Application");
-            alert.setHeaderText("Are you sure you want to close the application?");
+            alert.setHeaderText("Are you sure you want to close this incredible application?");
             alert.setContentText(null);
 
             Optional<ButtonType> result = alert.showAndWait();
             if (result.isPresent()) {
                 if (result.get() == ButtonType.OK) {
-                    LOGGER.log(Level.INFO, "User closed program");
+                    LOGGER.log(Level.CONFIG, "User closed program");
                     Platform.exit();
                 } else {
                     event.consume();

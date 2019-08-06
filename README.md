@@ -7,56 +7,75 @@ java testing for software
 ```java
     @Override
     public void start(Stage primaryStage) throws Exception {
+        final Logger LOGGER = Logger.getLogger(Main.class.getName());
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Adding Two Numbers");
         primaryStage.setScene(new Scene(root, 860, 600));
         primaryStage.show();
 
-        primaryStage.setOnCloseRequest(event ->
-        {
-            System.out.println("User Closed Program");
-            //some way for logging
-            Platform.exit();
+        primaryStage.setOnCloseRequest(event -> {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Quitting Application");
+            alert.setHeaderText("Are you sure you want to close this incredible application?");
+            alert.setContentText("You will regret it");
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent()) {
+                if (result.get() == ButtonType.OK) {
+                    LOGGER.log(Level.CONFIG, "User closed program");
+                    Platform.exit();
+                } else {
+                    event.consume();
+                }
+            }
         });
     }
 ```
 
 Initialises the program.
 When the user exits the program, 'User Closed Program' shown in console
+Separate init() intialises LOGGER
 
 #### Controller.java
 ```java
-    Float.parseFloat(inputTwo.getText());
-    System.out.println("User inputTwo as " + inputTwo.getText() + " which is a number");
-    float firstInput = Float.parseFloat(inputOne.getText());
-    float secondInput = Float.parseFloat(inputTwo.getText());
-    float sumTotal = firstInput + secondInput;
-    if (sumTotal == (int)sumTotal) {
-        sumResult.setText(String.valueOf(Math.round(sumTotal)));
-        System.out.println("added " + firstInput + " and " + secondInput + " to produce the integer " + Math.round(sumTotal));
+    @FXML protected void plusButton() {
+        tempSign = 1;
+        resetSignColor();
+        plusColor();
+        signPressed();
     }
-    else {
-        sumResult.setText(String.valueOf(sumTotal));
-        System.out.println("added " + firstInput + " and " + secondInput + " to produce the float " + sumTotal);
 ```
 
-Adding logic
-uses try/catch arround it so if input is not numeric, error displayed
+a button's code
+tempSign is changed to plus
+signs color is changed to signify it is on
+code ran to save input as firstNumber
 
 ```java
-    private void inputError() {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Input Error");
-
-        // Header Text: null
-        alert.setHeaderText(null);
-        alert.setContentText("Please put in a number");
-
-        alert.showAndWait();
-        System.out.println("inputError code run");
+private void numericTest() {
+        try {
+            Float.parseFloat(userInput.getText());
+            numericTestResult = 1;
+        }
+        catch (NumberFormatException inputNotNum) {
+            numericTestResult = 0;
+            LOGGER.log(Level.WARNING, "input not numeral");
+        }
     }
 ```
-error message code
+
+checks whether input is numeric or not
+
+```java
+private void displayAnswer() {
+        if (mathResult == (int)mathResult) {
+            mathOutput.setText(String.valueOf(Math.round(mathResult)));
+        }
+        else mathOutput.setText(String.valueOf(mathResult));
+    }
+```
+
+displays answer, making sure integers shown as int
 
 #### sample.fxml
 

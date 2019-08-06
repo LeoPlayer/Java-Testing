@@ -14,24 +14,23 @@ import javafx.scene.control.TextField;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-
 /**
  * fxml made using Scene Builder 2
  * Controller class used to initialise floats, then update with field when submit pressed
  * output also created after adding two numbers together
  */
+
 public class Controller {
-    private int stage = 0;
-    private int tempSign = 0;
-    private int sign = 0;
-    private float firstNumber = 0;
-    private float secondNumber = 0;
-    private float mathResult = 0;
+    private int stage = 0; //0 when no number, 1 when 1 number
+    private int tempSign = 0; //used as temp storage of current sign
+    private int sign = 0; //used as sign used in calculation
     private int numericTestResult = 0; //1 is number 0 is not number
-    private float memOne;
-    private float memTwo;
-    private int rootActive = 0;
+    private int rootActive = 0; //whether root is active or not
+    private double firstNumber = 0; //first number to calculate
+    private double secondNumber = 0; //second number to calculate
+    private double mathResult = 0; //result of calculation
+    private double memOne; //first memory number
+    private double memTwo; //second memory number
     private int moneySystemState = 0; //in the tens, 0 is initialisation
     private int adminLevel = 0; //0 not logged in, 1 logged in
     private int booted = 0; //1 booted, 0 not booted
@@ -43,6 +42,8 @@ public class Controller {
     @FXML private Button multiply;
     @FXML private Button divide;
     @FXML private Button root;
+    @FXML private Button memUn;
+    @FXML private Button memDeux;
     @FXML private TextField controllerTitle;
     @FXML private TextField controllerOne;
     @FXML private TextField controllerTwo;
@@ -54,35 +55,38 @@ public class Controller {
     private final Logger LOGGER = Logger.getLogger(Main.class.getName());
     @FXML protected void plusButton() {
         tempSign = 1;
+        resetSignColor();
         plusColor();
         signPressed();
     }
     @FXML protected void minusButton() {
         tempSign = 2;
+        resetSignColor();
         minusColor();
         signPressed();
     }
     @FXML protected void multiplyButton() {
         tempSign = 3;
+        resetSignColor();
         multiplyColor();
         signPressed();
     }
     @FXML protected void divideButton() {
         tempSign = 4;
+        resetSignColor();
         divideColor();
         signPressed();
     }
     @FXML protected void rootButton() {
         if (rootActive == 0) {
             rootColor();
-            userInput.requestFocus();
+            focus();
         }
         else {
             resetRootColor();
-            userInput.requestFocus();
+            focus();
         }
     }
-
     private void signPressed() {
         if (stage == 0) {
             if (userInput.getText().equals("")) {
@@ -92,10 +96,16 @@ public class Controller {
                     resetSignColor();
                 }
                 else {
-                    firstNumber = Float.parseFloat(mathOutput.getText());
+                    if (rootActive == 0) {
+                        firstNumber = Double.parseDouble(mathOutput.getText());
+                    }
+                    else {
+                        firstNumber = Math.sqrt(Double.parseDouble(mathOutput.getText()));
+                        resetRootColor();
+                    }
                     sign = tempSign;
                     stage = 1;
-                    userInput.requestFocus();
+                    focus();
                 }
             }
             else {
@@ -105,18 +115,24 @@ public class Controller {
                     resetSignColor();
                 }
                 else if (numericTestResult == 1) {
-                    firstNumber = Float.parseFloat(userInput.getText());
+                    if (rootActive == 0) {
+                        firstNumber = Double.parseDouble(userInput.getText());
+                    }
+                    else {
+                        firstNumber = Math.sqrt(Double.parseDouble(userInput.getText()));
+                        resetRootColor();
+                    }
                     sign = tempSign;
                     stage = 1;
                     userInput.clear();
-                    userInput.requestFocus();
+                    focus();
                 }
             }
         }
         else if (stage == 1) {
             if (userInput.getText().equals("")) {
                 sign = tempSign;
-                userInput.requestFocus();
+                focus();
             }
             else {
                 numericTest();
@@ -125,29 +141,44 @@ public class Controller {
                     resetSignColor();
                 }
                 else if (numericTestResult == 1){
-                    secondNumber = Float.parseFloat(userInput.getText());
+                    if (rootActive == 0) {
+                        secondNumber = Double.parseDouble(userInput.getText());
+                    }
+                    else {
+                        secondNumber = Math.sqrt(Double.parseDouble(userInput.getText()));
+                        resetRootColor();
+                    }
                     math();
                     displayAnswer();
                     sign = tempSign;
                     firstNumber = mathResult;
                     userInput.clear();
-                    userInput.requestFocus();
+                    focus();
                 }
             }
         }
     }
 
     @FXML protected void equalsButton() {
-        if (stage == 0 && !userInput.getText().equals("")) {
+        if (stage == 0 && userInput.getText().equals("")) {
+            resetRootColor();
+        }
+        else if (stage == 0 && !userInput.getText().equals("")) {
             numericTest();
             if (numericTestResult == 0) {
                 inputError();
             }
             else if (numericTestResult == 1) {
-                mathResult = Float.parseFloat(userInput.getText());
+                if (rootActive == 0) {
+                    mathResult = Double.parseDouble(userInput.getText());
+                }
+                else {
+                    mathResult = Math.sqrt(Double.parseDouble(userInput.getText()));
+                    resetRootColor();
+                }
                 displayAnswer();
                 userInput.clear();
-                userInput.requestFocus();
+                focus();
             }
         }
         else if (stage == 1) {
@@ -156,7 +187,8 @@ public class Controller {
                 displayAnswer();
                 stage = 0;
                 resetSignColor();
-                userInput.requestFocus();
+                resetRootColor();
+                focus();
             }
             else {
                 numericTest();
@@ -164,13 +196,19 @@ public class Controller {
                     inputError();
                 }
                 else if (numericTestResult == 1) {
-                    secondNumber = Float.parseFloat(userInput.getText());
+                    if (rootActive == 0) {
+                        secondNumber = Double.parseDouble(userInput.getText());
+                    }
+                    else {
+                        secondNumber = Math.sqrt(Double.parseDouble(userInput.getText()));
+                        resetRootColor();
+                    }
                     math();
                     displayAnswer();
                     stage = 0;
                     resetSignColor();
                     userInput.clear();
-                    userInput.requestFocus();
+                    focus();
                 }
             }
         }
@@ -184,7 +222,7 @@ public class Controller {
     }
     private void numericTest() {
         try {
-            Float.parseFloat(userInput.getText());
+            Double.parseDouble(userInput.getText());
             numericTestResult = 1;
         }
         catch (NumberFormatException inputNotNum) {
@@ -200,36 +238,46 @@ public class Controller {
     }
     @FXML protected void clear() {
         userInput.clear();
-        userInput.requestFocus();
+        resetRootColor();
+        focus();
     }
     @FXML protected void allClear() {
         userInput.clear();
         mathOutput.clear();
         stage = 0;
         resetSignColor();
+        resetRootColor();
         sign = 0;
         firstNumber = 0;
         secondNumber = 0;
-        userInput.requestFocus();
+        focus();
     }
     @FXML protected void pi() {
         userInput.setText(String.valueOf(Math.PI));
-        userInput.requestFocus();
+        resetRootColor();
+        focus();
     }
     @FXML protected void euler() {
         userInput.setText(String.valueOf(Math.E));
-        userInput.requestFocus();
+        resetRootColor();
+        focus();
     }
     @FXML protected void memOneCall() {
         if (memOne == (int)memOne) {
             userInput.setText(String.valueOf(Math.round(memOne)));
         }
         else userInput.setText(String.valueOf(memOne));
-        userInput.requestFocus();
+        focus();
     }
     @FXML protected void memOneSet() {
         if (userInput.getText().equals("")) {
-            memOne = Float.parseFloat(mathOutput.getText());
+            try {
+                memOne = Double.parseDouble(mathOutput.getText());
+                memUn.setStyle("-fx-background-color: #6ab873; -fx-border-color: #727272");
+            }
+            catch (NumberFormatException e) {
+                LOGGER.log(Level.INFO, "memOneSet failed, mathResult: " + mathResult);
+            }
         }
         else {
             numericTest();
@@ -237,92 +285,138 @@ public class Controller {
                 inputError();
             }
             else if (numericTestResult == 1) {
-                mathResult = Float.parseFloat(userInput.getText());
+                if (rootActive == 0) {
+                    mathResult = Double.parseDouble(userInput.getText());
+                }
+                else {
+                    mathResult = Math.sqrt(Double.parseDouble(userInput.getText()));
+                    resetRootColor();
+                }
                 displayAnswer();
-                userInput.clear();
-                stage = 0;
                 memOne = mathResult;
-                userInput.requestFocus();
+                memUn.setStyle("-fx-background-color: #6ab873; -fx-border-color: #727272");
             }
         }
-        userInput.requestFocus();
+        focus();
     }
     @FXML protected void memOneDelete() {
         memOne = 0;
-        userInput.requestFocus();
+        memUn.setStyle("-fx-background-color: #eaeaea; -fx-border-color: #727272");
+        focus();
     }
     @FXML protected void memTwoCall() {
         if (memTwo == (int)memTwo) {
             userInput.setText(String.valueOf(Math.round(memTwo)));
         }
         else userInput.setText(String.valueOf(memTwo));
-        userInput.requestFocus();
+        focus();
     }
     @FXML protected void memTwoSet() {
-        if (userInput.getText().equals("")) {
-            memTwo = Float.parseFloat(mathOutput.getText());
-        }
-        else {
+        if (!userInput.getText().equals("")) {
             numericTest();
-            if (numericTestResult == 0) {
+            if (numericTestResult == 1) {
+                if (rootActive == 1) {
+                    mathResult = Math.sqrt(Double.parseDouble(userInput.getText()));
+                    resetRootColor();
+                }
+                else {
+                    mathResult = Double.parseDouble(userInput.getText());
+                }
+                displayAnswer();
+                memTwo = mathResult;
+                memDeux.setStyle("-fx-background-color: #6ab873; -fx-border-color: #727272");
+            }
+            else if (numericTestResult == 0) {
                 inputError();
             }
-            else if (numericTestResult == 1) {
-                stage = 0;
-                mathResult = Float.parseFloat(userInput.getText());
-                displayAnswer();
-                userInput.clear();
-                memTwo = mathResult;
-                userInput.requestFocus();
+        }
+        else {
+            try {
+                memTwo = Double.parseDouble(mathOutput.getText());
+                memDeux.setStyle("-fx-background-color: #6ab873; -fx-border-color: #727272");
+            }
+            catch (NumberFormatException e) {
+                LOGGER.log(Level.INFO, "memTwoSet failed, mathResult: " + mathResult);
             }
         }
-        userInput.requestFocus();
+        focus();
     }
     @FXML protected void memTwoDelete() {
         memTwo = 0;
-        userInput.requestFocus();
+        memDeux.setStyle("-fx-background-color: #eaeaea; -fx-border-color: #727272");
+        focus();
     }
     @FXML protected void memoryDeleteAll() {
         memOne = 0;
         memTwo = 0;
-        userInput.requestFocus();
+        memUn.setStyle("-fx-background-color: #eaeaea; -fx-border-color: #727272");
+        memDeux.setStyle("-fx-background-color: #eaeaea; -fx-border-color: #727272");
+        focus();
+    }
+    @FXML protected void zero() {
+        userInput.setText(userInput.getText() + "0");
+        focus();
+    }
+    @FXML protected void un() {
+        userInput.setText(userInput.getText() + "1");
+        focus();
+    }
+    @FXML protected void deux() {
+        userInput.setText(userInput.getText() + "2");
+        focus();
+    }
+    @FXML protected void trois() {
+        userInput.setText(userInput.getText() + "3");
+        focus();
+    }
+    @FXML protected void quatre() {
+        userInput.setText(userInput.getText() + "4");
+        focus();
+    }
+    @FXML protected void cinq() {
+        userInput.setText(userInput.getText() + "5");
+        focus();
+    }
+    @FXML protected void six() {
+        userInput.setText(userInput.getText() + "6");
+        focus();
+    }
+    @FXML protected void sept() {
+        userInput.setText(userInput.getText() + "7");
+        focus();
+    }
+    @FXML protected void huit() {
+        userInput.setText(userInput.getText() + "8");
+        focus();
+    }
+    @FXML protected void neuf() {
+        userInput.setText(userInput.getText() + "9");
+        focus();
     }
     private void plusColor() {
-        plus.setStyle("-fx-background-color: #adadad");
-        minus.setStyle("-fx-background-color: #eaeaea");
-        multiply.setStyle("-fx-background-color: #eaeaea");
-        divide.setStyle("-fx-background-color: #eaeaea");
+        plus.setStyle("-fx-background-color: #adadad; -fx-border-color: #727272");
     }
     private void minusColor() {
-        plus.setStyle("-fx-background-color: #eaeaea");
-        minus.setStyle("-fx-background-color: #adadad");
-        multiply.setStyle("-fx-background-color: #eaeaea");
-        divide.setStyle("-fx-background-color: #eaeaea");
+        minus.setStyle("-fx-background-color: #adadad; -fx-border-color: #727272");
     }
     private void multiplyColor() {
-        plus.setStyle("-fx-background-color: #eaeaea");
-        minus.setStyle("-fx-background-color: #eaeaea");
-        multiply.setStyle("-fx-background-color: #adadad");
-        divide.setStyle("-fx-background-color: #eaeaea");
+        multiply.setStyle("-fx-background-color: #adadad; -fx-border-color: #727272");
     }
     private void divideColor() {
-        plus.setStyle("-fx-background-color: #eaeaea");
-        minus.setStyle("-fx-background-color: #eaeaea");
-        multiply.setStyle("-fx-background-color: #eaeaea");
-        divide.setStyle("-fx-background-color: #adadad");
+        divide.setStyle("-fx-background-color: #adadad; -fx-border-color: #727272");
     }
     private void resetSignColor() {
-        plus.setStyle("-fx-background-color: #eaeaea");
-        minus.setStyle("-fx-background-color: #eaeaea");
-        multiply.setStyle("-fx-background-color: #eaeaea");
-        divide.setStyle("-fx-background-color: #eaeaea");
+        plus.setStyle("-fx-background-color: #eaeaea; -fx-border-color: #727272");
+        minus.setStyle("-fx-background-color: #eaeaea; -fx-border-color: #727272");
+        multiply.setStyle("-fx-background-color: #eaeaea; -fx-border-color: #727272");
+        divide.setStyle("-fx-background-color: #eaeaea; -fx-border-color: #727272");
     }
     private void rootColor() {
-        root.setStyle("-fx-background-color: #adadad");
+        root.setStyle("-fx-background-color: #adadad; -fx-border-color: #727272");
         rootActive = 1;
     }
     private void resetRootColor() {
-        root.setStyle("-fx-background-color: #eaeaea");
+        root.setStyle("-fx-background-color: #eaeaea; -fx-border-color: #727272");
         rootActive = 0;
     }
     private void inputError() {
@@ -332,7 +426,11 @@ public class Controller {
         alert.setContentText("Please put in a number");
         LOGGER.log(Level.WARNING, "inputError");
         alert.showAndWait();
+        focus();
+    }
+    private void focus() {
         userInput.requestFocus();
+        userInput.end();
     }
 
     //money management system below
@@ -612,9 +710,12 @@ public class Controller {
     private void setTwenty() { //check balance
         clearControllers();
         controllerTitle.setText("Check Balance");
-        controllerTwo.setStyle("-fx-alignment: CENTER");
-        controllerTwo.setText("Balance");
+        controllerOne.setStyle("-fx-alignment: CENTER");
+        controllerOne.setText("Balance");
         //balance
+        controllerThree.setStyle("-fx-alignment: CENTER");
+        controllerThree.setText("Your Balance");
+        //users balance
         controllerFive.setText("Back");
         moneySystemState = 20;
     }

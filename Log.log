@@ -2,9 +2,9 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2019-08-04T08:46:24.740195Z</date>
-  <millis>1564908384740</millis>
-  <nanos>195000</nanos>
+  <date>2019-08-06T11:30:58.422208Z</date>
+  <millis>1565091058422</millis>
+  <nanos>208000</nanos>
   <sequence>0</sequence>
   <logger>Math.Main</logger>
   <level>CONFIG</level>
@@ -14,9 +14,9 @@
   <message>Configuration done.</message>
 </record>
 <record>
-  <date>2019-08-04T12:16:58.176071Z</date>
-  <millis>1564921018176</millis>
-  <nanos>71000</nanos>
+  <date>2019-08-06T11:32:45.025930Z</date>
+  <millis>1565091165025</millis>
+  <nanos>930000</nanos>
   <sequence>1</sequence>
   <logger>Math.Main</logger>
   <level>CONFIG</level>
@@ -25,3 +25,4 @@
   <thread>15</thread>
   <message>User closed program</message>
 </record>
+</log>

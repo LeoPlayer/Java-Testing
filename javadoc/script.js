@@ -1,6 +1,26 @@
 /*
- * Copyright (©) 2019. Leo Player - Manly Selective Campus
- * made using JavaFX in IntelliJ
+ * Copyright (c) 2013, 2018, Oracle and/or its affiliates. All rights reserved.
+ * ORACLE PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
  */
 
 var moduleSearchIndex;

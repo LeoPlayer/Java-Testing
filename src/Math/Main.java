@@ -67,7 +67,7 @@ public class Main extends Application {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Quitting Application");
             alert.setHeaderText("Are you sure you want to close this incredible application?");
-            alert.setContentText(null);
+            alert.setContentText("You will regret it");
 
             Optional<ButtonType> result = alert.showAndWait();
             if (result.isPresent()) {

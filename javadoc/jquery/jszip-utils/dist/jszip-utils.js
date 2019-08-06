@@ -1,8 +1,3 @@
-/*
- * Copyright (©) 2019. Leo Player - Manly Selective Campus
- * made using JavaFX in IntelliJ
- */
-
 /*!
 
 JSZipUtils - A collection of cross-browser utilities to go along with JSZip.

@@ -1,7 +1,7 @@
-/*
- * Copyright (©) 2019. Leo Player - Manly Selective Campus
- * made using JavaFX in IntelliJ
- */
+/*! jQuery UI - v1.12.1 - 2018-12-06
+* http://jqueryui.com
+* Includes: widget.js, position.js, keycode.js, unique-id.js, widgets/autocomplete.js, widgets/menu.js
+* Copyright jQuery Foundation and other contributors; Licensed MIT */
 
 (function( factory ) {
 	if ( typeof define === "function" && define.amd ) {

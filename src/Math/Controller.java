@@ -250,16 +250,15 @@ public class Controller {
         sign = 0;
         firstNumber = 0;
         secondNumber = 0;
+        mathResult = 0;
         focus();
     }
     @FXML protected void pi() {
         userInput.setText(String.valueOf(Math.PI));
-        resetRootColor();
         focus();
     }
     @FXML protected void euler() {
         userInput.setText(String.valueOf(Math.E));
-        resetRootColor();
         focus();
     }
     @FXML protected void memOneCall() {
@@ -276,7 +275,7 @@ public class Controller {
                 memUn.setStyle("-fx-background-color: #6ab873; -fx-border-color: #727272");
             }
             catch (NumberFormatException e) {
-                LOGGER.log(Level.INFO, "memOneSet failed, mathResult: " + mathResult);
+                LOGGER.log(Level.INFO, "memOneSet failed, mathResult: " + mathResult + " userInput: " + userInput.getText());
             }
         }
         else {
@@ -336,20 +335,13 @@ public class Controller {
                 memDeux.setStyle("-fx-background-color: #6ab873; -fx-border-color: #727272");
             }
             catch (NumberFormatException e) {
-                LOGGER.log(Level.INFO, "memTwoSet failed, mathResult: " + mathResult);
+                LOGGER.log(Level.INFO, "memTwoSet failed, mathResult: " + mathResult + " userInput: " + userInput.getText());
             }
         }
         focus();
     }
     @FXML protected void memTwoDelete() {
         memTwo = 0;
-        memDeux.setStyle("-fx-background-color: #eaeaea; -fx-border-color: #727272");
-        focus();
-    }
-    @FXML protected void memoryDeleteAll() {
-        memOne = 0;
-        memTwo = 0;
-        memUn.setStyle("-fx-background-color: #eaeaea; -fx-border-color: #727272");
         memDeux.setStyle("-fx-background-color: #eaeaea; -fx-border-color: #727272");
         focus();
     }
@@ -391,6 +383,38 @@ public class Controller {
     }
     @FXML protected void neuf() {
         userInput.setText(userInput.getText() + "9");
+        focus();
+    }
+    @FXML protected void plusMinusButton() {
+        if (userInput.getText().equals("")) {
+            userInput.setText("-");
+            focus();
+        }
+        else if (userInput.getText().equals("-")) {
+            userInput.setText("");
+            focus();
+        }
+        else {
+            numericTest();
+            if (numericTestResult == 0) {
+                inputError();
+            }
+            else {
+                if (Double.parseDouble(userInput.getText()) < 0) {
+                    userInput.setText(userInput.getText().substring(1));
+                }
+                else if (Double.parseDouble(userInput.getText()) == 0) {
+                    userInput.setText(String.valueOf(0));
+                }
+                else {
+                    userInput.setText("-" + userInput.getText());
+                }
+                focus();
+            }
+        }
+    }
+    @FXML protected void decimalButton() {
+        userInput.setText(userInput.getText() + ".");
         focus();
     }
     private void plusColor() {
@@ -602,7 +626,9 @@ public class Controller {
         controllerOne.setStyle("-fx-alignment: CENTER");
         controllerOne.setText("Input for access");
         controllerTwo.setText("(User Name)");
+        controllerTwo.setEditable(true);
         controllerThree.setText("(Password)");
+        controllerThree.setEditable(true);
         controllerFour.setText("Enter");
         controllerFive.setText("Back");
         moneySystemState = 2;
@@ -726,6 +752,7 @@ public class Controller {
         controllerOne.setText("Current Balance");
         //balance
         controllerThree.setText("(Amount to add)");
+        controllerThree.setEditable(true);
         controllerFour.setText("Enter");
         controllerFive.setText("Back");
         moneySystemState = 30;
@@ -737,21 +764,20 @@ public class Controller {
         controllerOne.setText("Current Balance");
         //balance
         controllerThree.setText("(Amount to subtract)");
+        controllerThree.setEditable(true);
         controllerFour.setText("Enter");
         controllerFive.setText("Back");
         moneySystemState = 40;
     }
     private void clearControllers() {
         controllerTitle.setText(null);
-        controllerOne.setText(null);
-        controllerOne.setStyle("-fx-alignment: CENTER-RIGHT");
-        controllerTwo.setText(null);
-        controllerTwo.setStyle("-fx-alignment: CENTER-RIGHT");
-        controllerThree.setText(null);
-        controllerThree.setStyle("-fx-alignment: CENTER-RIGHT");
-        controllerFour.setText(null);
-        controllerFour.setStyle("-fx-alignment: CENTER-RIGHT");
-        controllerFive.setText(null);
-        controllerFive.setStyle("-fx-alignment: CENTER-RIGHT");
+        clearControllers(controllerOne, controllerTwo, controllerThree, controllerFour, controllerFive);
+    }
+    private void clearControllers(TextField... testFields) {
+        for (TextField textField : testFields) {
+            textField.setText(null);
+            textField.setStyle("-fx-alignment: CENTER-RIGHT");
+            textField.setEditable(false);
+        }
     }
 }

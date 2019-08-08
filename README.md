@@ -1,7 +1,7 @@
 # Java-Testing
 java testing for software
 
-## Addition
+## Calculator
 
 #### Main.java
 ```java

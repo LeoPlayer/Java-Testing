@@ -5,6 +5,7 @@
 
 package Math;
 
+import com.opencsv.CSVReader;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +15,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.Optional;
 import java.util.logging.*;
 
@@ -51,14 +53,36 @@ public class Main extends Application {
 
         } catch (IOException exception) {
             LOGGER.log(Level.SEVERE, "FAILED TO CREATE LOG", exception);
-            LOGGER.severe("failed to create log");
+            System.exit(1);
+        }
+        File language = new File("src/Math/CSV/languages.csv");
+        BufferedReader br;
+        String line;
+        String cvsSplitBy = ",";
+        try {
+            br = new BufferedReader(new FileReader(language));
+            while ((line = br.readLine()) != null) {
+                // use comma as separator
+                String[] languageString = line.split(cvsSplitBy);
+
+                System.out.println(languageString[0]);
+
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            LOGGER.log(Level.SEVERE, "Failed CSV 1: " + e.getStackTrace() + " " + e.getCause());
+            System.exit(2);
+        } catch (IOException e) {
+            e.printStackTrace();
+            LOGGER.log(Level.SEVERE, "Failed CSV 2: " + e.getStackTrace() + " " + e.getCause());
+            System.exit(3);
         }
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         final Logger LOGGER = Logger.getLogger(Main.class.getName());
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("calculator.fxml"));
         primaryStage.setTitle("Adding Two Numbers");
         primaryStage.setScene(new Scene(root, 860, 600));
         primaryStage.show();
@@ -74,6 +98,7 @@ public class Main extends Application {
                 if (result.get() == ButtonType.OK) {
                     LOGGER.log(Level.CONFIG, "User closed program");
                     Platform.exit();
+                    System.exit(0);
                 } else {
                     event.consume();
                 }

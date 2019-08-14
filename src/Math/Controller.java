@@ -35,6 +35,7 @@ public class Controller {
     private int adminLevel = 0; //0 not logged in, 1 logged in
     private int booted = 0; //1 booted, 0 not booted
     private int on = 0; //0 is off, 1 is on
+    private int language = 0; //0eng
     @FXML private TextArea mathOutput;
     @FXML private TextArea userInput;
     @FXML private Button plus;
@@ -91,7 +92,7 @@ public class Controller {
         if (stage == 0) {
             if (userInput.getText().equals("")) {
                 if (mathOutput.getText().equals("")) {
-                    LOGGER.log(Level.WARNING, "signPressed, s=0, no uI mO");
+                    LOGGER.log(Level.INFO, "signPressed, s=0, no uI mO");
                     inputError();
                     resetSignColor();
                 }
@@ -218,7 +219,11 @@ public class Controller {
         else if (sign == 2) mathResult = firstNumber - secondNumber;
         else if (sign == 3) mathResult = firstNumber * secondNumber;
         else if (sign == 4) mathResult = firstNumber / secondNumber;
-        else LOGGER.log(Level.SEVERE, "sign not 1~4 at math()");
+        else {
+            LOGGER.log(Level.SEVERE, "sign not 1~4 at math()");
+            LOGGER.severe(String.valueOf(sign));
+            System.exit(10);
+        }
     }
     private void numericTest() {
         try {
@@ -227,7 +232,7 @@ public class Controller {
         }
         catch (NumberFormatException inputNotNum) {
             numericTestResult = 0;
-            LOGGER.log(Level.WARNING, "input not numeral");
+            LOGGER.log(Level.WARNING, "input not numeral: " + userInput.getText());
         }
     }
     private void displayAnswer() {
@@ -274,8 +279,9 @@ public class Controller {
                 memOne = Double.parseDouble(mathOutput.getText());
                 memUn.setStyle("-fx-background-color: #6ab873; -fx-border-color: #727272");
             }
-            catch (NumberFormatException e) {
+            catch (NumberFormatException memOne) {
                 LOGGER.log(Level.INFO, "memOneSet failed, mathResult: " + mathResult + " userInput: " + userInput.getText());
+                LOGGER.info(String.valueOf(memOne));
             }
         }
         else {
@@ -334,8 +340,9 @@ public class Controller {
                 memTwo = Double.parseDouble(mathOutput.getText());
                 memDeux.setStyle("-fx-background-color: #6ab873; -fx-border-color: #727272");
             }
-            catch (NumberFormatException e) {
+            catch (NumberFormatException memTwo) {
                 LOGGER.log(Level.INFO, "memTwoSet failed, mathResult: " + mathResult + " userInput: " + userInput.getText());
+                LOGGER.info(String.valueOf(memTwo));
             }
         }
         focus();
@@ -470,8 +477,9 @@ public class Controller {
                 else setThree();
                 break;
             default:
-                LOGGER.log(Level.SEVERE, "I am bad at coding 1");
+                LOGGER.log(Level.INFO, "I am bad at coding 1");
         }
+        focus();
     }
     @FXML protected void controllerTwoButton() {
         switch (moneySystemState) {
@@ -479,8 +487,9 @@ public class Controller {
                 setTwenty();
                 break;
             default:
-                LOGGER.log(Level.SEVERE, "I am bad at coding 2");
+                LOGGER.log(Level.INFO, "I am bad at coding 2");
         }
+        focus();
     }
     @FXML protected void controllerThreeButton() {
         switch (moneySystemState) {
@@ -488,8 +497,9 @@ public class Controller {
                 setThirty();
                 break;
             default:
-                LOGGER.log(Level.SEVERE, "I am bad at coding 3");
+                LOGGER.log(Level.INFO, "I am bad at coding 3");
         }
+        focus();
     }
     @FXML protected void controllerFourButton() {
         switch (moneySystemState) {
@@ -507,8 +517,9 @@ public class Controller {
                 setForty();
                 break;
             default:
-                LOGGER.log(Level.SEVERE, "I am bad at coding 4");
+                LOGGER.log(Level.INFO, "I am bad at coding 4");
         }
+        focus();
     }
     @FXML protected void controllerFiveButton() {
         switch (moneySystemState) {
@@ -531,8 +542,9 @@ public class Controller {
                 setTen();
                 break;
             default:
-                LOGGER.log(Level.SEVERE, "I am bad at coding 5");
+                LOGGER.log(Level.INFO, "I am bad at coding 5");
         }
+        focus();
     }
     private void setOne() { //boot screen
         clearControllers();
@@ -615,19 +627,23 @@ public class Controller {
             case 9:
                 controllerOne.setText("something creative 9");
                 break;
+            default:
+                LOGGER.log(Level.SEVERE, "error comment");
+                System.exit(11);
         }
         controllerFour.setText("Boot");
         controllerFive.setText("Off");
         moneySystemState = 1;
+        //focus(); dunno why but fails in MMS
     }
     private void setTwo() { //admin login
         clearControllers();
         controllerTitle.setText("Admin");
         controllerOne.setStyle("-fx-alignment: CENTER");
         controllerOne.setText("Input for access");
-        controllerTwo.setText("(User Name)");
+        controllerTwo.setPromptText("User Name");
         controllerTwo.setEditable(true);
-        controllerThree.setText("(Password)");
+        controllerThree.setPromptText("Password");
         controllerThree.setEditable(true);
         controllerFour.setText("Enter");
         controllerFive.setText("Back");
@@ -724,6 +740,7 @@ public class Controller {
         }
     }
     private void actuallySetTen() {
+        clearControllers();
         controllerTitle.setText("Main Menu");
         //controllerOne.setText(""); to put something else in
         controllerTwo.setText("Check Balance");
@@ -751,7 +768,7 @@ public class Controller {
         controllerOne.setStyle("-fx-alignment: CENTER");
         controllerOne.setText("Current Balance");
         //balance
-        controllerThree.setText("(Amount to add)");
+        controllerThree.setPromptText("Amount to add");
         controllerThree.setEditable(true);
         controllerFour.setText("Enter");
         controllerFive.setText("Back");
@@ -763,7 +780,7 @@ public class Controller {
         controllerOne.setStyle("-fx-alignment: CENTER");
         controllerOne.setText("Current Balance");
         //balance
-        controllerThree.setText("(Amount to subtract)");
+        controllerThree.setPromptText("Amount to subtract");
         controllerThree.setEditable(true);
         controllerFour.setText("Enter");
         controllerFive.setText("Back");
@@ -778,6 +795,39 @@ public class Controller {
             textField.setText(null);
             textField.setStyle("-fx-alignment: CENTER-RIGHT");
             textField.setEditable(false);
+            textField.setPromptText(null);
         }
+    }
+
+    //Language setting
+    //change prompt text, text display and c2mms/mms2c button text
+
+    //communication between systems
+
+    @FXML protected void c2mmsButton() {
+        switch (moneySystemState) {
+            case 30:
+            case 40:
+                if (userInput.getText().equals("")) {
+                    controllerThree.setText(mathOutput.getText());
+                    focus();
+                }
+                else {
+                    numericTest();
+                    if (numericTestResult == 0) {
+                        inputError();
+                    }
+                    else {
+                        controllerThree.setText(userInput.getText());
+                        focus();
+                    }
+                }
+            default:
+                focus();
+        }
+    }
+    @FXML protected void mms2cButton() {
+        //mathOutput.setText(String.valueOf(Double.parseDouble(userInput.getText()))); to mess up
+        sign = 5;
     }
 }

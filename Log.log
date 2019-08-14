@@ -2,9 +2,9 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2019-08-08T11:51:16.916430Z</date>
-  <millis>1565265076916</millis>
-  <nanos>430000</nanos>
+  <date>2019-08-14T12:23:57.634678Z</date>
+  <millis>1565785437634</millis>
+  <nanos>678000</nanos>
   <sequence>0</sequence>
   <logger>Math.Main</logger>
   <level>CONFIG</level>
@@ -14,135 +14,15 @@
   <message>Configuration done.</message>
 </record>
 <record>
-  <date>2019-08-08T11:51:22.187689Z</date>
-  <millis>1565265082187</millis>
-  <nanos>689000</nanos>
+  <date>2019-08-14T12:24:03.895379Z</date>
+  <millis>1565785443895</millis>
+  <nanos>379000</nanos>
   <sequence>1</sequence>
-  <logger>Math.Main</logger>
-  <level>WARNING</level>
-  <class>Math.Controller</class>
-  <method>signPressed</method>
-  <thread>16</thread>
-  <message>signPressed, s=0, no uI mO</message>
-</record>
-<record>
-  <date>2019-08-08T11:51:22.243961Z</date>
-  <millis>1565265082243</millis>
-  <nanos>961000</nanos>
-  <sequence>2</sequence>
-  <logger>Math.Main</logger>
-  <level>WARNING</level>
-  <class>Math.Controller</class>
-  <method>inputError</method>
-  <thread>16</thread>
-  <message>inputError</message>
-</record>
-<record>
-  <date>2019-08-08T11:51:24.604650Z</date>
-  <millis>1565265084604</millis>
-  <nanos>650000</nanos>
-  <sequence>3</sequence>
-  <logger>Math.Main</logger>
-  <level>INFO</level>
-  <class>Math.Controller</class>
-  <method>memOneSet</method>
-  <thread>16</thread>
-  <message>memOneSet failed, mathResult: 0.0 userInput: </message>
-</record>
-<record>
-  <date>2019-08-08T11:51:25.841812Z</date>
-  <millis>1565265085841</millis>
-  <nanos>812000</nanos>
-  <sequence>4</sequence>
-  <logger>Math.Main</logger>
-  <level>INFO</level>
-  <class>Math.Controller</class>
-  <method>memTwoSet</method>
-  <thread>16</thread>
-  <message>memTwoSet failed, mathResult: 0.0 userInput: </message>
-</record>
-<record>
-  <date>2019-08-08T11:51:40.073074Z</date>
-  <millis>1565265100073</millis>
-  <nanos>74000</nanos>
-  <sequence>5</sequence>
-  <logger>Math.Main</logger>
-  <level>WARNING</level>
-  <class>Math.Controller</class>
-  <method>signPressed</method>
-  <thread>16</thread>
-  <message>signPressed, s=0, no uI mO</message>
-</record>
-<record>
-  <date>2019-08-08T11:51:40.078730Z</date>
-  <millis>1565265100078</millis>
-  <nanos>730000</nanos>
-  <sequence>6</sequence>
-  <logger>Math.Main</logger>
-  <level>WARNING</level>
-  <class>Math.Controller</class>
-  <method>inputError</method>
-  <thread>16</thread>
-  <message>inputError</message>
-</record>
-<record>
-  <date>2019-08-08T11:51:42.839629Z</date>
-  <millis>1565265102839</millis>
-  <nanos>629000</nanos>
-  <sequence>7</sequence>
-  <logger>Math.Main</logger>
-  <level>WARNING</level>
-  <class>Math.Controller</class>
-  <method>numericTest</method>
-  <thread>16</thread>
-  <message>input not numeral</message>
-</record>
-<record>
-  <date>2019-08-08T11:51:42.848253Z</date>
-  <millis>1565265102848</millis>
-  <nanos>253000</nanos>
-  <sequence>8</sequence>
-  <logger>Math.Main</logger>
-  <level>WARNING</level>
-  <class>Math.Controller</class>
-  <method>inputError</method>
-  <thread>16</thread>
-  <message>inputError</message>
-</record>
-<record>
-  <date>2019-08-08T11:51:47.462413Z</date>
-  <millis>1565265107462</millis>
-  <nanos>413000</nanos>
-  <sequence>9</sequence>
-  <logger>Math.Main</logger>
-  <level>WARNING</level>
-  <class>Math.Controller</class>
-  <method>numericTest</method>
-  <thread>16</thread>
-  <message>input not numeral</message>
-</record>
-<record>
-  <date>2019-08-08T11:51:47.468220Z</date>
-  <millis>1565265107468</millis>
-  <nanos>220000</nanos>
-  <sequence>10</sequence>
-  <logger>Math.Main</logger>
-  <level>WARNING</level>
-  <class>Math.Controller</class>
-  <method>inputError</method>
-  <thread>16</thread>
-  <message>inputError</message>
-</record>
-<record>
-  <date>2019-08-08T11:51:55.838548Z</date>
-  <millis>1565265115838</millis>
-  <nanos>548000</nanos>
-  <sequence>11</sequence>
   <logger>Math.Main</logger>
   <level>CONFIG</level>
   <class>Math.Main</class>
   <method>lambda$start$0</method>
-  <thread>16</thread>
+  <thread>15</thread>
   <message>User closed program</message>
 </record>
 </log>

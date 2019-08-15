@@ -58,7 +58,7 @@
             <Font name="Comic Sans MS" size="16.0" />
          </font>
       </Button>
-      <Button layoutX="575.0" layoutY="253.0" mnemonicParsing="false" onAction="#memOneSet" prefHeight="37.0" prefWidth="32.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="Set" textFill="#5a5a5a">
+      <Button fx:id="memUnSet" layoutX="575.0" layoutY="253.0" mnemonicParsing="false" onAction="#memOneSet" prefHeight="37.0" prefWidth="32.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="Set" textFill="#5a5a5a">
          <font>
             <Font name="Comic Sans MS" size="9.0" />
          </font>
@@ -68,17 +68,17 @@
             <Font name="Comic Sans MS" size="16.0" />
          </font>
       </Button>
-      <Button layoutX="575.0" layoutY="289.0" mnemonicParsing="false" onAction="#memTwoSet" prefHeight="37.0" prefWidth="32.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="Set" textFill="#5a5a5a">
+      <Button fx:id="memDeuxSet" layoutX="575.0" layoutY="289.0" mnemonicParsing="false" onAction="#memTwoSet" prefHeight="37.0" prefWidth="32.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="Set" textFill="#5a5a5a">
          <font>
             <Font name="Comic Sans MS" size="9.0" />
          </font>
       </Button>
-      <Button layoutX="606.0" layoutY="253.0" mnemonicParsing="false" onAction="#memOneDelete" prefHeight="37.0" prefWidth="54.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="del" textFill="#5a5a5a">
+      <Button fx:id="memUnDelete" layoutX="606.0" layoutY="253.0" mnemonicParsing="false" onAction="#memOneDelete" prefHeight="37.0" prefWidth="54.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="del" textFill="#5a5a5a">
          <font>
             <Font name="Comic Sans MS" size="9.0" />
          </font>
       </Button>
-      <Button layoutX="606.0" layoutY="289.0" mnemonicParsing="false" onAction="#memTwoDelete" prefHeight="37.0" prefWidth="54.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="del" textFill="#5a5a5a">
+      <Button fx:id="memDeuxDelete" layoutX="606.0" layoutY="289.0" mnemonicParsing="false" onAction="#memTwoDelete" prefHeight="37.0" prefWidth="54.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="del" textFill="#5a5a5a">
          <font>
             <Font name="Comic Sans MS" size="9.0" />
          </font>
@@ -173,12 +173,12 @@
             <Font name="Comic Sans MS" size="26.0" />
          </font>
       </Button>
-      <Button layoutX="606.0" layoutY="401.0" mnemonicParsing="false" onAction="#c2mmsButton" prefHeight="61.0" prefWidth="160.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="calculator to MMS" textFill="#5a5a5a">
+      <Button fx:id="c2mms" layoutX="606.0" layoutY="401.0" mnemonicParsing="false" onAction="#c2mmsButton" prefHeight="61.0" prefWidth="160.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="calculator to MMS" textFill="#5a5a5a">
          <font>
             <Font name="Comic Sans MS" size="13.0" />
          </font>
       </Button>
-      <Button layoutX="606.0" layoutY="461.0" mnemonicParsing="false" onAction="#mms2cButton" prefHeight="61.0" prefWidth="160.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="MMS to calculator" textFill="#5a5a5a">
+      <Button fx:id="mms2c" layoutX="606.0" layoutY="461.0" mnemonicParsing="false" onAction="#mms2cButton" prefHeight="61.0" prefWidth="160.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="MMS to calculator" textFill="#5a5a5a">
          <font>
             <Font name="Comic Sans MS" size="13.0" />
          </font>

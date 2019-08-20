@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.*?>
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Math.Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="538.0" prefWidth="782.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Math.Controller">
    <children>
       <TextArea id="inputOne" fx:id="userInput" layoutX="11.0" layoutY="10.0" prefHeight="117.0" prefWidth="443.0" promptText="Number">
          <font>
@@ -33,7 +30,7 @@
             <Font name="Comic Sans MS" size="28.0" />
          </font>
       </Button>
-      <Button layoutX="659.0" layoutY="193.0" mnemonicParsing="false" onAction="#equalsButton" prefHeight="61.0" prefWidth="107.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="=" textFill="#5a5a5a">
+      <Button fx:id="equals" layoutX="659.0" layoutY="193.0" mnemonicParsing="false" onAction="#equalsButton" prefHeight="61.0" prefWidth="107.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="=" textFill="#5a5a5a">
          <font>
             <Font name="Comic Sans MS" size="22.0" />
          </font>
@@ -43,12 +40,12 @@
             <Font name="Comic Sans MS" size="22.0" />
          </font>
       </TextArea>
-      <Button layoutX="659.0" layoutY="13.0" mnemonicParsing="false" onAction="#allClear" prefHeight="61.0" prefWidth="54.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="AC" textFill="#5a5a5a">
+      <Button fx:id="allClear" layoutX="659.0" layoutY="13.0" mnemonicParsing="false" onAction="#allClear" prefHeight="61.0" prefWidth="54.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="AC" textFill="#5a5a5a">
          <font>
             <Font name="Comic Sans MS" size="17.0" />
          </font>
       </Button>
-      <Button layoutX="712.0" layoutY="13.0" mnemonicParsing="false" onAction="#clear" prefHeight="61.0" prefWidth="54.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="C" textFill="#5a5a5a">
+      <Button fx:id="clear" layoutX="712.0" layoutY="13.0" mnemonicParsing="false" onAction="#clear" prefHeight="61.0" prefWidth="54.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="C" textFill="#5a5a5a">
          <font>
             <Font name="Comic Sans MS" size="20.0" />
          </font>
@@ -83,7 +80,7 @@
             <Font name="Comic Sans MS" size="9.0" />
          </font>
       </Button>
-      <Button layoutX="712.0" layoutY="289.0" mnemonicParsing="false" onAction="#euler" prefHeight="37.0" prefWidth="54.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="e" textFill="#5a5a5a">
+      <Button fx:id="euler" layoutX="712.0" layoutY="289.0" mnemonicParsing="false" onAction="#euler" prefHeight="37.0" prefWidth="54.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="e" textFill="#5a5a5a">
          <font>
             <Font name="Comic Sans MS" size="16.0" />
          </font>
@@ -103,72 +100,72 @@
       <Button layoutX="545.0" layoutY="448.0" mnemonicParsing="false" onAction="#controllerThreeButton" prefHeight="27.0" prefWidth="31.0" />
       <Button layoutX="545.0" layoutY="475.0" mnemonicParsing="false" onAction="#controllerFourButton" prefHeight="27.0" prefWidth="31.0" />
       <Button layoutX="545.0" layoutY="502.0" mnemonicParsing="false" onAction="#controllerFiveButton" prefHeight="27.0" prefWidth="31.0" />
-      <TextField fx:id="controllerTitle" alignment="CENTER" editable="false" layoutX="14.0" layoutY="350.0" prefHeight="27.0" prefWidth="534.0">
+      <TextField fx:id="controllerTitle" alignment="CENTER" editable="false" layoutX="14.0" layoutY="350.0" prefHeight="35.0" prefWidth="534.0">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <Button layoutX="712.0" layoutY="253.0" mnemonicParsing="false" onAction="#pi" prefHeight="37.0" prefWidth="54.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="π" textFill="#5a5a5a">
+      <Button fx:id="pi" layoutX="712.0" layoutY="253.0" mnemonicParsing="false" onAction="#pi" prefHeight="37.0" prefWidth="54.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="π" textFill="#5a5a5a">
          <font>
             <Font name="Comic Sans MS" size="16.0" />
          </font>
       </Button>
-      <Button layoutX="606.0" layoutY="13.0" mnemonicParsing="false" onAction="#neuf" prefHeight="61.0" prefWidth="54.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="9" textFill="#5a5a5a">
+      <Button fx:id="nine" layoutX="606.0" layoutY="13.0" mnemonicParsing="false" onAction="#neuf" prefHeight="61.0" prefWidth="54.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="9" textFill="#5a5a5a">
          <font>
             <Font name="Comic Sans MS" size="17.0" />
          </font>
       </Button>
-      <Button layoutX="553.0" layoutY="13.0" mnemonicParsing="false" onAction="#huit" prefHeight="61.0" prefWidth="54.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="8" textFill="#5a5a5a">
+      <Button fx:id="eight" layoutX="553.0" layoutY="13.0" mnemonicParsing="false" onAction="#huit" prefHeight="61.0" prefWidth="54.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="8" textFill="#5a5a5a">
          <font>
             <Font name="Comic Sans MS" size="17.0" />
          </font>
       </Button>
-      <Button layoutX="500.0" layoutY="13.0" mnemonicParsing="false" onAction="#sept" prefHeight="61.0" prefWidth="54.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="7" textFill="#5a5a5a">
+      <Button fx:id="seven" layoutX="500.0" layoutY="13.0" mnemonicParsing="false" onAction="#sept" prefHeight="61.0" prefWidth="54.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="7" textFill="#5a5a5a">
          <font>
             <Font name="Comic Sans MS" size="17.0" />
          </font>
       </Button>
-      <Button layoutX="500.0" layoutY="73.0" mnemonicParsing="false" onAction="#quatre" prefHeight="61.0" prefWidth="54.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="4" textFill="#5a5a5a">
+      <Button fx:id="four" layoutX="500.0" layoutY="73.0" mnemonicParsing="false" onAction="#quatre" prefHeight="61.0" prefWidth="54.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="4" textFill="#5a5a5a">
          <font>
             <Font name="Comic Sans MS" size="17.0" />
          </font>
       </Button>
-      <Button layoutX="553.0" layoutY="73.0" mnemonicParsing="false" onAction="#cinq" prefHeight="61.0" prefWidth="54.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="5" textFill="#5a5a5a">
+      <Button fx:id="five" layoutX="553.0" layoutY="73.0" mnemonicParsing="false" onAction="#cinq" prefHeight="61.0" prefWidth="54.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="5" textFill="#5a5a5a">
          <font>
             <Font name="Comic Sans MS" size="17.0" />
          </font>
       </Button>
-      <Button layoutX="606.0" layoutY="73.0" mnemonicParsing="false" onAction="#six" prefHeight="61.0" prefWidth="54.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="6" textFill="#5a5a5a">
+      <Button fx:id="six" layoutX="606.0" layoutY="73.0" mnemonicParsing="false" onAction="#six" prefHeight="61.0" prefWidth="54.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="6" textFill="#5a5a5a">
          <font>
             <Font name="Comic Sans MS" size="17.0" />
          </font>
       </Button>
-      <Button layoutX="606.0" layoutY="133.0" mnemonicParsing="false" onAction="#trois" prefHeight="61.0" prefWidth="54.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="3" textFill="#5a5a5a">
+      <Button fx:id="three" layoutX="606.0" layoutY="133.0" mnemonicParsing="false" onAction="#trois" prefHeight="61.0" prefWidth="54.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="3" textFill="#5a5a5a">
          <font>
             <Font name="Comic Sans MS" size="17.0" />
          </font>
       </Button>
-      <Button layoutX="553.0" layoutY="133.0" mnemonicParsing="false" onAction="#deux" prefHeight="61.0" prefWidth="54.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="2" textFill="#5a5a5a">
+      <Button fx:id="two" layoutX="553.0" layoutY="133.0" mnemonicParsing="false" onAction="#deux" prefHeight="61.0" prefWidth="54.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="2" textFill="#5a5a5a">
          <font>
             <Font name="Comic Sans MS" size="17.0" />
          </font>
       </Button>
-      <Button layoutX="500.0" layoutY="133.0" mnemonicParsing="false" onAction="#un" prefHeight="61.0" prefWidth="54.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="1" textFill="#5a5a5a">
+      <Button fx:id="one" layoutX="500.0" layoutY="133.0" mnemonicParsing="false" onAction="#un" prefHeight="61.0" prefWidth="54.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="1" textFill="#5a5a5a">
          <font>
             <Font name="Comic Sans MS" size="17.0" />
          </font>
       </Button>
-      <Button layoutX="500.0" layoutY="193.0" mnemonicParsing="false" onAction="#zero" prefHeight="61.0" prefWidth="54.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="0" textFill="#5a5a5a">
+      <Button fx:id="zero" layoutX="500.0" layoutY="193.0" mnemonicParsing="false" onAction="#zero" prefHeight="61.0" prefWidth="54.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="0" textFill="#5a5a5a">
          <font>
             <Font name="Comic Sans MS" size="17.0" />
          </font>
       </Button>
-      <Button layoutX="606.0" layoutY="193.0" mnemonicParsing="false" onAction="#plusMinusButton" prefHeight="61.0" prefWidth="54.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="+/-" textFill="#5a5a5a">
+      <Button fx:id="plusMinus" layoutX="606.0" layoutY="193.0" mnemonicParsing="false" onAction="#plusMinusButton" prefHeight="61.0" prefWidth="54.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="+/-" textFill="#5a5a5a">
          <font>
             <Font name="Comic Sans MS" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="553.0" layoutY="193.0" mnemonicParsing="false" onAction="#decimalButton" prefHeight="61.0" prefWidth="54.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="." textFill="#5a5a5a">
+      <Button fx:id="decimal" layoutX="553.0" layoutY="193.0" mnemonicParsing="false" onAction="#decimalButton" prefHeight="61.0" prefWidth="54.0" style="-fx-background-color: eaeaea; -fx-border-color: #727272" text="." textFill="#5a5a5a">
          <font>
             <Font name="Comic Sans MS" size="26.0" />
          </font>
@@ -183,5 +180,6 @@
             <Font name="Comic Sans MS" size="13.0" />
          </font>
       </Button>
+      <Button fx:id="adminButton" layoutX="547.0" layoutY="350.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="18.0" style="-fx-background-color: #13b839;" />
    </children>
 </Pane>

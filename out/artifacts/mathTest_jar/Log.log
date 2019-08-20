@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-08-20T11:01:55.928879Z</date>
+  <millis>1566298915928</millis>
+  <nanos>879000</nanos>
+  <sequence>0</sequence>
+  <logger>Math.Main</logger>
+  <level>CONFIG</level>
+  <class>Math.Main</class>
+  <method>init</method>
+  <thread>16</thread>
+  <message>Logger Configuration done.</message>
+</record>
+<record>
+  <date>2019-08-20T11:01:56.001254Z</date>
+  <millis>1566298916001</millis>
+  <nanos>254000</nanos>
+  <sequence>1</sequence>
+  <logger>Math.Main</logger>
+  <level>CONFIG</level>
+  <class>Math.Main</class>
+  <method>csvLanguageInitialise</method>
+  <thread>16</thread>
+  <message>Language CSV Configuration done.</message>
+</record>
+<record>
+  <date>2019-08-20T11:01:56.002750Z</date>
+  <millis>1566298916002</millis>
+  <nanos>750000</nanos>
+  <sequence>2</sequence>
+  <logger>Math.Main</logger>
+  <level>CONFIG</level>
+  <class>Math.Main</class>
+  <method>init</method>
+  <thread>16</thread>
+  <message>Password CSV Configuration done.</message>
+</record>
+<record>
+  <date>2019-08-20T11:01:56.003518Z</date>
+  <millis>1566298916003</millis>
+  <nanos>518000</nanos>
+  <sequence>3</sequence>
+  <logger>Math.Main</logger>
+  <level>CONFIG</level>
+  <class>Math.Main</class>
+  <method>init</method>
+  <thread>16</thread>
+  <message>Username CSV Configuration done.</message>
+</record>
+<record>
+  <date>2019-08-20T11:01:56.012989Z</date>
+  <millis>1566298916012</millis>
+  <nanos>989000</nanos>
+  <sequence>4</sequence>
+  <logger>Math.Main</logger>
+  <level>CONFIG</level>
+  <class>Math.Main</class>
+  <method>csvUserLoginInitialise</method>
+  <thread>16</thread>
+  <message>Language CSV Configuration done. csv: src/Math/CSV/leo.csv</message>
+</record>
+<record>
+  <date>2019-08-20T11:01:56.015286Z</date>
+  <millis>1566298916015</millis>
+  <nanos>286000</nanos>
+  <sequence>5</sequence>
+  <logger>Math.Main</logger>
+  <level>CONFIG</level>
+  <class>Math.Main</class>
+  <method>init</method>
+  <thread>16</thread>
+  <message>Configuration complete.</message>
+</record>
+<record>
+  <date>2019-08-20T11:02:10.236637Z</date>
+  <millis>1566298930236</millis>
+  <nanos>637000</nanos>
+  <sequence>6</sequence>
+  <logger>Math.Main</logger>
+  <level>INFO</level>
+  <class>Math.Controller</class>
+  <method>controllerFourButton</method>
+  <thread>14</thread>
+  <message>admin uname success: Orange Hammer Fish</message>
+</record>
+<record>
+  <date>2019-08-20T11:02:10.238953Z</date>
+  <millis>1566298930238</millis>
+  <nanos>953000</nanos>
+  <sequence>7</sequence>
+  <logger>Math.Main</logger>
+  <level>INFO</level>
+  <class>Math.Controller</class>
+  <method>controllerFourButton</method>
+  <thread>14</thread>
+  <message>admin pword success: password</message>
+</record>
+<record>
+  <date>2019-08-20T11:02:11.970486Z</date>
+  <millis>1566298931970</millis>
+  <nanos>486000</nanos>
+  <sequence>8</sequence>
+  <logger>Math.Main</logger>
+  <level>CONFIG</level>
+  <class>Math.Main</class>
+  <method>csvLanguageInitialise</method>
+  <thread>14</thread>
+  <message>Language CSV Configuration done.</message>
+</record>
+<record>
+  <date>2019-08-20T11:02:11.971244Z</date>
+  <millis>1566298931971</millis>
+  <nanos>244000</nanos>
+  <sequence>9</sequence>
+  <logger>Math.Main</logger>
+  <level>CONFIG</level>
+  <class>Math.Controller</class>
+  <method>setLang2</method>
+  <thread>14</thread>
+  <message>Language Initialised</message>
+</record>
+<record>
+  <date>2019-08-20T11:03:40.697607Z</date>
+  <millis>1566299020697</millis>
+  <nanos>607000</nanos>
+  <sequence>10</sequence>
+  <logger>Math.Main</logger>
+  <level>WARNING</level>
+  <class>Math.Controller</class>
+  <method>numericTest</method>
+  <thread>14</thread>
+  <message>input not numeral: d</message>
+</record>
+<record>
+  <date>2019-08-20T11:03:40.733133Z</date>
+  <millis>1566299020733</millis>
+  <nanos>133000</nanos>
+  <sequence>11</sequence>
+  <logger>Math.Main</logger>
+  <level>WARNING</level>
+  <class>Math.Controller</class>
+  <method>inputError</method>
+  <thread>14</thread>
+  <message>inputError</message>
+</record>
+<record>
+  <date>2019-08-20T11:03:49.246380Z</date>
+  <millis>1566299029246</millis>
+  <nanos>380000</nanos>
+  <sequence>12</sequence>
+  <logger>Math.Main</logger>
+  <level>CONFIG</level>
+  <class>Math.Main</class>
+  <method>csvLanguageInitialise</method>
+  <thread>14</thread>
+  <message>Language CSV Configuration done.</message>
+</record>
+<record>
+  <date>2019-08-20T11:03:49.247244Z</date>
+  <millis>1566299029247</millis>
+  <nanos>244000</nanos>
+  <sequence>13</sequence>
+  <logger>Math.Main</logger>
+  <level>CONFIG</level>
+  <class>Math.Controller</class>
+  <method>setLang2</method>
+  <thread>14</thread>
+  <message>Language Initialised</message>
+</record>
+<record>
+  <date>2019-08-20T11:03:53.353736Z</date>
+  <millis>1566299033353</millis>
+  <nanos>736000</nanos>
+  <sequence>14</sequence>
+  <logger>Math.Main</logger>
+  <level>WARNING</level>
+  <class>Math.Controller</class>
+  <method>numericTest</method>
+  <thread>14</thread>
+  <message>input not numeral: d</message>
+</record>
+<record>
+  <date>2019-08-20T11:03:53.357255Z</date>
+  <millis>1566299033357</millis>
+  <nanos>255000</nanos>
+  <sequence>15</sequence>
+  <logger>Math.Main</logger>
+  <level>WARNING</level>
+  <class>Math.Controller</class>
+  <method>inputError</method>
+  <thread>14</thread>
+  <message>inputError</message>
+</record>
+<record>
+  <date>2019-08-20T11:03:58.914893Z</date>
+  <millis>1566299038914</millis>
+  <nanos>893000</nanos>
+  <sequence>16</sequence>
+  <logger>Math.Main</logger>
+  <level>CONFIG</level>
+  <class>Math.Main</class>
+  <method>csvLanguageInitialise</method>
+  <thread>14</thread>
+  <message>Language CSV Configuration done.</message>
+</record>
+<record>
+  <date>2019-08-20T11:03:58.915613Z</date>
+  <millis>1566299038915</millis>
+  <nanos>613000</nanos>
+  <sequence>17</sequence>
+  <logger>Math.Main</logger>
+  <level>CONFIG</level>
+  <class>Math.Controller</class>
+  <method>setLang2</method>
+  <thread>14</thread>
+  <message>Language Initialised</message>
+</record>
+<record>
+  <date>2019-08-20T11:04:11.416986Z</date>
+  <millis>1566299051416</millis>
+  <nanos>986000</nanos>
+  <sequence>18</sequence>
+  <logger>Math.Main</logger>
+  <level>INFO</level>
+  <class>Math.Controller</class>
+  <method>controllerFourButton</method>
+  <thread>14</thread>
+  <message>user login failed, uname: null pword: null</message>
+</record>
+<record>
+  <date>2019-08-20T11:04:25.353602Z</date>
+  <millis>1566299065353</millis>
+  <nanos>602000</nanos>
+  <sequence>19</sequence>
+  <logger>Math.Main</logger>
+  <level>INFO</level>
+  <class>Math.Controller</class>
+  <method>controllerFourButton</method>
+  <thread>14</thread>
+  <message>user login failed, uname: LEOOO pword: null</message>
+</record>
+<record>
+  <date>2019-08-20T11:04:45.108708Z</date>
+  <millis>1566299085108</millis>
+  <nanos>708000</nanos>
+  <sequence>20</sequence>
+  <logger>Math.Main</logger>
+  <level>CONFIG</level>
+  <class>Math.Main</class>
+  <method>lambda$start$0</method>
+  <thread>14</thread>
+  <message>User closed program exit 0</message>
+</record>
+</log>

@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.*?>
+
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="538.0" prefWidth="782.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Math.Controller">
    <children>
-      <TextArea id="inputOne" fx:id="userInput" layoutX="11.0" layoutY="10.0" prefHeight="117.0" prefWidth="443.0" promptText="Number">
+      <TextArea fx:id="input" layoutX="11.0" layoutY="10.0" prefHeight="117.0" prefWidth="443.0" promptText="Number">
          <font>
             <Font name="Comic Sans MS" size="22.0" />
          </font>
@@ -35,7 +38,7 @@
             <Font name="Comic Sans MS" size="22.0" />
          </font>
       </Button>
-      <TextArea fx:id="mathOutput" editable="false" layoutX="11.0" layoutY="195.0" prefHeight="128.0" prefWidth="443.0" promptText="Result">
+      <TextArea fx:id="output" editable="false" layoutX="11.0" layoutY="195.0" prefHeight="128.0" prefWidth="443.0" promptText="Result">
          <font>
             <Font name="Comic Sans MS" size="22.0" />
          </font>
@@ -92,8 +95,8 @@
       </Button>
       <TextField fx:id="controllerOne" alignment="CENTER_RIGHT" editable="false" layoutX="14.0" layoutY="394.0" prefHeight="27.0" prefWidth="534.0" />
       <TextField fx:id="controllerTwo" alignment="CENTER_RIGHT" editable="false" layoutX="14.0" layoutY="421.0" prefHeight="27.0" prefWidth="534.0" />
-      <TextField fx:id="controllerFour" alignment="CENTER_RIGHT" editable="false" layoutX="14.0" layoutY="475.0" prefHeight="27.0" prefWidth="534.0" />
       <TextField fx:id="controllerThree" alignment="CENTER_RIGHT" editable="false" layoutX="14.0" layoutY="448.0" prefHeight="27.0" prefWidth="534.0" />
+      <TextField fx:id="controllerFour" alignment="CENTER_RIGHT" editable="false" layoutX="14.0" layoutY="475.0" prefHeight="27.0" prefWidth="534.0" />
       <TextField fx:id="controllerFive" alignment="CENTER_RIGHT" editable="false" layoutX="14.0" layoutY="502.0" prefHeight="27.0" prefWidth="534.0" />
       <Button layoutX="545.0" layoutY="394.0" mnemonicParsing="false" onAction="#controllerOneButton" prefHeight="27.0" prefWidth="31.0" />
       <Button layoutX="545.0" layoutY="421.0" mnemonicParsing="false" onAction="#controllerTwoButton" prefHeight="27.0" prefWidth="31.0" />

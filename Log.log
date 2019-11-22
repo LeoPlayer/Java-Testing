@@ -2,181 +2,205 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2019-09-02T09:41:14.289055Z</date>
-  <millis>1567417274289</millis>
-  <nanos>55000</nanos>
+  <date>2019-10-28T23:49:21.506593Z</date>
+  <millis>1572306561506</millis>
+  <nanos>593000</nanos>
   <sequence>0</sequence>
-  <logger>Math.Main</logger>
+  <logger>math.Main</logger>
   <level>CONFIG</level>
-  <class>Math.Main</class>
+  <class>math.Main</class>
   <method>init</method>
-  <thread>17</thread>
+  <thread>18</thread>
   <message>Logger Configuration done.</message>
 </record>
 <record>
-  <date>2019-09-02T09:41:14.357015Z</date>
-  <millis>1567417274357</millis>
-  <nanos>15000</nanos>
+  <date>2019-10-28T23:49:21.556794Z</date>
+  <millis>1572306561556</millis>
+  <nanos>794000</nanos>
   <sequence>1</sequence>
-  <logger>Math.Main</logger>
+  <logger>math.Main</logger>
   <level>CONFIG</level>
-  <class>Math.Main</class>
+  <class>math.Main</class>
   <method>csvLanguageInitialise</method>
-  <thread>17</thread>
+  <thread>18</thread>
   <message>Language CSV Configuration done. CSV: src/Math/CSV/english.csv</message>
 </record>
 <record>
-  <date>2019-09-02T09:41:14.357726Z</date>
-  <millis>1567417274357</millis>
-  <nanos>726000</nanos>
+  <date>2019-10-28T23:49:21.557878Z</date>
+  <millis>1572306561557</millis>
+  <nanos>878000</nanos>
   <sequence>2</sequence>
-  <logger>Math.Main</logger>
+  <logger>math.Main</logger>
   <level>CONFIG</level>
-  <class>Math.Main</class>
+  <class>math.Main</class>
   <method>init</method>
-  <thread>17</thread>
+  <thread>18</thread>
   <message>Password CSV Configuration done.</message>
 </record>
 <record>
-  <date>2019-09-02T09:41:14.369688Z</date>
-  <millis>1567417274369</millis>
-  <nanos>688000</nanos>
+  <date>2019-10-28T23:49:21.558883Z</date>
+  <millis>1572306561558</millis>
+  <nanos>883000</nanos>
   <sequence>3</sequence>
-  <logger>Math.Main</logger>
+  <logger>math.Main</logger>
   <level>CONFIG</level>
-  <class>Math.Main</class>
+  <class>math.Main</class>
   <method>init</method>
-  <thread>17</thread>
+  <thread>18</thread>
   <message>Username CSV Configuration done.</message>
 </record>
 <record>
-  <date>2019-09-02T09:41:14.370799Z</date>
-  <millis>1567417274370</millis>
-  <nanos>799000</nanos>
+  <date>2019-10-28T23:49:21.560268Z</date>
+  <millis>1572306561560</millis>
+  <nanos>268000</nanos>
   <sequence>4</sequence>
-  <logger>Math.Main</logger>
+  <logger>math.Main</logger>
   <level>CONFIG</level>
-  <class>Math.Main</class>
+  <class>math.Main</class>
   <method>csvUserLoginInitialise</method>
-  <thread>17</thread>
+  <thread>18</thread>
   <message>CSV Username Configuration done. csv: src/Math/CSV/leo.csv</message>
 </record>
 <record>
-  <date>2019-09-02T09:41:14.371589Z</date>
-  <millis>1567417274371</millis>
-  <nanos>589000</nanos>
+  <date>2019-10-28T23:49:21.561309Z</date>
+  <millis>1572306561561</millis>
+  <nanos>309000</nanos>
   <sequence>5</sequence>
-  <logger>Math.Main</logger>
+  <logger>math.Main</logger>
   <level>CONFIG</level>
-  <class>Math.Main</class>
+  <class>math.Main</class>
   <method>csvUserLoginInitialise</method>
-  <thread>17</thread>
+  <thread>18</thread>
   <message>CSV Username Configuration done. csv: src/Math/CSV/jaden.csv</message>
 </record>
 <record>
-  <date>2019-09-02T09:41:14.372339Z</date>
-  <millis>1567417274372</millis>
-  <nanos>339000</nanos>
+  <date>2019-10-28T23:49:21.562287Z</date>
+  <millis>1572306561562</millis>
+  <nanos>287000</nanos>
   <sequence>6</sequence>
-  <logger>Math.Main</logger>
+  <logger>math.Main</logger>
   <level>CONFIG</level>
-  <class>Math.Main</class>
+  <class>math.Main</class>
   <method>csvUserLoginInitialise</method>
-  <thread>17</thread>
+  <thread>18</thread>
   <message>CSV Username Configuration done. csv: src/Math/CSV/wang.csv</message>
 </record>
 <record>
-  <date>2019-09-02T09:41:14.373003Z</date>
-  <millis>1567417274373</millis>
-  <nanos>3000</nanos>
+  <date>2019-10-28T23:49:21.563255Z</date>
+  <millis>1572306561563</millis>
+  <nanos>255000</nanos>
   <sequence>7</sequence>
-  <logger>Math.Main</logger>
+  <logger>math.Main</logger>
   <level>CONFIG</level>
-  <class>Math.Main</class>
+  <class>math.Main</class>
   <method>csvUserLoginInitialise</method>
-  <thread>17</thread>
+  <thread>18</thread>
   <message>CSV Username Configuration done. csv: src/Math/CSV/goyk.csv</message>
 </record>
 <record>
-  <date>2019-09-02T09:41:14.373630Z</date>
-  <millis>1567417274373</millis>
-  <nanos>630000</nanos>
+  <date>2019-10-28T23:49:21.564280Z</date>
+  <millis>1572306561564</millis>
+  <nanos>280000</nanos>
   <sequence>8</sequence>
-  <logger>Math.Main</logger>
+  <logger>math.Main</logger>
   <level>CONFIG</level>
-  <class>Math.Main</class>
+  <class>math.Main</class>
   <method>csvUserLoginInitialise</method>
-  <thread>17</thread>
+  <thread>18</thread>
   <message>CSV Username Configuration done. csv: src/Math/CSV/boeing.csv</message>
 </record>
 <record>
-  <date>2019-09-02T09:41:14.374628Z</date>
-  <millis>1567417274374</millis>
-  <nanos>628000</nanos>
+  <date>2019-10-28T23:49:21.565401Z</date>
+  <millis>1572306561565</millis>
+  <nanos>401000</nanos>
   <sequence>9</sequence>
-  <logger>Math.Main</logger>
+  <logger>math.Main</logger>
   <level>CONFIG</level>
-  <class>Math.Main</class>
+  <class>math.Main</class>
   <method>csvMoneyReader</method>
-  <thread>17</thread>
+  <thread>18</thread>
   <message>Money Reader CSV. no. users in CSV: 5</message>
 </record>
 <record>
-  <date>2019-09-02T09:41:14.375256Z</date>
-  <millis>1567417274375</millis>
-  <nanos>256000</nanos>
+  <date>2019-10-28T23:49:21.565978Z</date>
+  <millis>1572306561565</millis>
+  <nanos>978000</nanos>
   <sequence>10</sequence>
-  <logger>Math.Main</logger>
+  <logger>math.Main</logger>
   <level>CONFIG</level>
-  <class>Math.Main</class>
+  <class>math.Main</class>
   <method>csvMoneyReader</method>
-  <thread>17</thread>
+  <thread>18</thread>
   <message>Money Reader CSV done. no. users loaded: 5</message>
 </record>
 <record>
-  <date>2019-09-02T09:41:14.375637Z</date>
-  <millis>1567417274375</millis>
-  <nanos>637000</nanos>
+  <date>2019-10-28T23:49:21.566348Z</date>
+  <millis>1572306561566</millis>
+  <nanos>348000</nanos>
   <sequence>11</sequence>
-  <logger>Math.Main</logger>
+  <logger>math.Main</logger>
   <level>CONFIG</level>
-  <class>Math.Main</class>
+  <class>math.Main</class>
   <method>init</method>
-  <thread>17</thread>
+  <thread>18</thread>
   <message>Configuration complete.</message>
 </record>
 <record>
-  <date>2019-09-02T09:41:33.059156Z</date>
-  <millis>1567417293059</millis>
-  <nanos>156000</nanos>
+  <date>2019-10-28T23:51:30.848934Z</date>
+  <millis>1572306690848</millis>
+  <nanos>934000</nanos>
   <sequence>12</sequence>
-  <logger>Math.Main</logger>
+  <logger>math.Main</logger>
   <level>INFO</level>
-  <class>Math.Controller</class>
+  <class>math.Controller</class>
   <method>controllerFourButton</method>
   <thread>15</thread>
-  <message>user 1 logged in</message>
+  <message>user 2 logged in</message>
 </record>
 <record>
-  <date>2019-09-02T09:41:33.064097Z</date>
-  <millis>1567417293064</millis>
-  <nanos>97000</nanos>
+  <date>2019-10-28T23:51:30.872944Z</date>
+  <millis>1572306690872</millis>
+  <nanos>944000</nanos>
   <sequence>13</sequence>
-  <logger>Math.Main</logger>
+  <logger>math.Main</logger>
   <level>INFO</level>
-  <class>Math.Controller</class>
+  <class>math.Controller</class>
   <method>logIn</method>
   <thread>15</thread>
-  <message>User Logged in. uname: Leo, pword: Fishy</message>
+  <message>User Logged in. uname: Jaden, pword: Super Fish</message>
 </record>
 <record>
-  <date>2019-09-02T09:41:38.842462Z</date>
-  <millis>1567417298842</millis>
-  <nanos>462000</nanos>
+  <date>2019-10-28T23:51:45.735391Z</date>
+  <millis>1572306705735</millis>
+  <nanos>391000</nanos>
   <sequence>14</sequence>
-  <logger>Math.Main</logger>
+  <logger>math.Main</logger>
   <level>CONFIG</level>
-  <class>Math.Main</class>
+  <class>math.Main</class>
+  <method>csvMoneyReader</method>
+  <thread>15</thread>
+  <message>Money Reader CSV. no. users in CSV: 5</message>
+</record>
+<record>
+  <date>2019-10-28T23:51:45.735835Z</date>
+  <millis>1572306705735</millis>
+  <nanos>835000</nanos>
+  <sequence>15</sequence>
+  <logger>math.Main</logger>
+  <level>CONFIG</level>
+  <class>math.Main</class>
+  <method>csvMoneyReader</method>
+  <thread>15</thread>
+  <message>Money Reader CSV done. no. users loaded: 5</message>
+</record>
+<record>
+  <date>2019-10-28T23:51:49.904319Z</date>
+  <millis>1572306709904</millis>
+  <nanos>319000</nanos>
+  <sequence>16</sequence>
+  <logger>math.Main</logger>
+  <level>CONFIG</level>
+  <class>math.Main</class>
   <method>lambda$start$0</method>
   <thread>15</thread>
   <message>User closed program exit 0</message>

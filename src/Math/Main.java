@@ -3,9 +3,9 @@
  * made using JavaFX in IntelliJ
  */
 
-package Math;
+package math;
 
-import com.opencsv.CSVWriter;
+import com.opencsv.*;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -34,7 +34,7 @@ public class Main extends Application {
     static String[] user4;
     static String[] user5;
     static String[] money;
-    static String[] UNameShown = new String[6];
+    static final String[] UNameShown = new String[6];
     static String superSecurePassword;
     static String username;
     private static String[] moneyTemp;

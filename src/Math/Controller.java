@@ -3,7 +3,7 @@
  * made using JavaFX in IntelliJ
  */
 
-package Math;
+package math;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -20,7 +20,7 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static Math.Main.*;
+import static math.Main.*;
 
 /**
  * fxml made using Scene Builder 2
@@ -49,7 +49,7 @@ public class Controller {
     private int user = 0; //what user is logged in
     private int numericTestMoneyResult = 0; //1 is number 0 is not number
     private int UserNumber = 0; //which user admin is accessing
-    private boolean buttonPressable = true;
+    private boolean buttonPressable = true; //when MMS button is pressable
     @FXML
     private TextArea output;
     @FXML
@@ -235,7 +235,7 @@ public class Controller {
     }
 
     @FXML
-    protected void equalsButton() { //code ran when equals button presesd
+    protected void equalsButton() { //code ran when equals button pressed
         if (stage == 0 && input.getText().equals("")) {
             resetRootColor();
         } else if (stage == 0 && !input.getText().equals("")) {
@@ -300,7 +300,7 @@ public class Controller {
         try {
             new BigDecimal(input.getText());
             numericTestResult = 1;
-        } catch (RuntimeException inputNotNum) {
+        } catch (RuntimeException inputNotNum) { //if there is an error, input not number
             numericTestResult = 0;
             LOGGER.log(Level.WARNING, "input not numeral: " + input.getText());
             LOGGER.log(Level.WARNING, "input not numeral: " + Arrays.toString(inputNotNum.getStackTrace()));
@@ -308,9 +308,18 @@ public class Controller {
     }
 
     private void displayAnswer() { //shows answer as int if int, else as float
-        if (mathResult.equals(mathResult.setScale(0, RoundingMode.HALF_UP))) {
+        if (mathResult.compareTo(mathResult.setScale(0, RoundingMode.HALF_UP)) == 0) {
             output.setText(String.valueOf(mathResult.setScale(0, RoundingMode.HALF_UP)));
-        } else output.setText(String.valueOf(mathResult));
+        } else {
+            for (int i = 0; i < 101; i++) {
+                try {
+                    output.setText(String.valueOf(mathResult.setScale(i, RoundingMode.UNNECESSARY)));
+                    break;
+                } catch (ArithmeticException ignored) {
+                   //will repeat to find number of significant figures in decimal
+                }
+            }
+        }
     }
 
     @FXML
@@ -336,21 +345,30 @@ public class Controller {
 
     @FXML
     protected void pi() {
-        input.setText(String.valueOf(new BigDecimal(3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679)));
+        input.setText("3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679");
         focus();
     }
 
     @FXML
     protected void euler() {
-        input.setText(String.valueOf(new BigDecimal(2.7182818284590452353602874713526624977572470936999595749669676277240766303535475945713821785251664274)));
+        input.setText("2.7182818284590452353602874713526624977572470936999595749669676277240766303535475945713821785251664274");
         focus();
     }
 
     @FXML
     protected void memOneCall() { //sets input as value in memory 1
-        if (memOne.equals(memOne.setScale(0, RoundingMode.HALF_UP))) {
+        if (memOne.compareTo(memOne.setScale(0, RoundingMode.HALF_UP)) == 0) {
             input.setText(String.valueOf(memOne.setScale(0, RoundingMode.HALF_UP)));
-        } else input.setText(String.valueOf(memOne));
+        } else {
+            for (int i = 0; i < 101; i++) {
+                try {
+                    input.setText(String.valueOf(mathResult.setScale(i, RoundingMode.UNNECESSARY)));
+                    break;
+                } catch (ArithmeticException ignored) {
+                    //will repeat to find number of significant figures in decimal
+                }
+            }
+        }
         focus();
     }
 
@@ -392,9 +410,18 @@ public class Controller {
 
     @FXML
     protected void memTwoCall() {
-        if (memTwo.equals(memTwo.setScale(0, RoundingMode.HALF_UP))) {
+        if (memTwo.compareTo(memTwo.setScale(0, RoundingMode.HALF_UP)) == 0) {
             input.setText(String.valueOf(memTwo.setScale(0, RoundingMode.HALF_UP)));
-        } else input.setText(String.valueOf(memTwo));
+        } else {
+            for (int i = 0; i < 101; i++) {
+                try {
+                    input.setText(String.valueOf(mathResult.setScale(i, RoundingMode.UNNECESSARY)));
+                    break;
+                } catch (ArithmeticException ignored) {
+                    //will repeat to find number of significant figures in decimal
+                }
+            }
+        }
         focus();
     }
 
@@ -849,13 +876,15 @@ public class Controller {
         StringBuilder sb = new StringBuilder();
 
         //split into two characters
-        for (int i = 0; i < hex.length() - 1; i += 2) {
+        int i = 0;
+        while (i < hex.length() - 1) {
             //grab the hex in pairs
             String output = hex.substring(i, (i + 2));
             //convert hex to decimal
             int decimal = Integer.parseInt(output, 16);
             //convert the decimal to character
             sb.append((char) decimal);
+            i += 2;
         }
         return sb.toString();
     }
@@ -1247,19 +1276,19 @@ public class Controller {
         }
     }
 
-    private void logIn() { //
+    private void logIn() { //standard code ran when a user logs in
         adminButton.setStyle("-fx-background-color: #005dff");
         LOGGER.info("User Logged in. uname: " + controllerTwo.getText() + ", pword: " + controllerThree.getText());
         setTen();
     }
 
-    private void clearControllers() {
+    private void clearControllers() { //code ran to clear all controllers and title
         controllerTitle.setText(null);
         clearControllers(controllerOne, controllerTwo, controllerThree, controllerFour, controllerFive);
         buttonPressable = false;
     }
 
-    private void clearControllers(TextField... testFields) {
+    private void clearControllers(TextField... testFields) { //code ran for all controllers
         for (TextField textField : testFields) {
             textField.setText(null);
             textField.setStyle("-fx-alignment: CENTER-RIGHT; -fx-text-fill: " + textColor + ";");
@@ -1268,19 +1297,19 @@ public class Controller {
         }
     }
 
-    private void setCenterControllers(TextField... central) {
+    private void setCenterControllers(TextField... central) { //text central for controller
         for (TextField textField : central) {
             textField.setStyle("-fx-alignment: CENTER; -fx-text-fill: " + textColor + ";");
         }
     }
 
-    private void setEditableControllers(TextField... edit) {
+    private void setEditableControllers(TextField... edit) { //make controller editable
         for (TextField textField : edit) {
             textField.setEditable(true);
         }
     }
 
-    private void setTextColor() {
+    private void setTextColor() { //ran to change text colour
         setButtonTextColor(zero, one, two, three, four, five, six, seven, eight,
                 nine, allClear, clear, plus, minus, multiply, divide, decimal,
                 plusMinus, equals, memUn, memUnSet, memUnDelete, memDeux, memDeuxSet,

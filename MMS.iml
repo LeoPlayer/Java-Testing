@@ -10,5 +10,6 @@
     <orderEntry type="library" exported="" name="lib" level="project" />
     <orderEntry type="library" exported="" name="gtranslateapi-1.0" level="project" />
     <orderEntry type="library" exported="" name="opencsv-4.6" level="project" />
+    <orderEntry type="library" name="javaOpenCSV" level="project" />
   </component>
 </module>
